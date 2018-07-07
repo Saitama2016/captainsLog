@@ -44,8 +44,16 @@ function getRecentTripUpdates(callback) {
 
 function displayTripUpdates(data) {
     for (index in data.tripUpdates) {
-        $('main').append(
-        '<p>' + data.tripUpdates[index].city + data.tripUpdates[index].country + '</p>');
+        $('#vacationLog').append(
+        `
+        <div class="trip">
+            <p class="arrival"> Arrival: ${data.tripUpdates[index].arrive} </p>
+            <p class="departure"> Departure: ${data.tripUpdates[index].depart} </p>
+            <p class="location"> ${data.tripUpdates[index].city}, ${data.tripUpdates[index].country} </p>
+            <p><button id="edit">Edit</button> <button id="delete">Delete</button></p>
+        </div>
+        `
+        );
     }
 }
 

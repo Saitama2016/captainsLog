@@ -4,6 +4,28 @@ header {
     left: 0;
 }
 
+#Logo {
+    font-family: 'Cardo', serif;
+}
+
+#Logo:hover {
+    cursor: pointer;
+}
+
 main {
     padding-top: 85px;
+}
+
+.arrival, .departure, .trip {
+    font-family: 'Rubik', sans-serif;
+}
+
+.arrival, .departure {
+    font-weight: 600;
+}
+
+.trip {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
 }
