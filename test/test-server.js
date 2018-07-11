@@ -2,7 +2,12 @@
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const app = require('../server.js');
+const faker = require('faker');
+const mongoose = require('mongoose');
+
+const should = chai.should();
+
+const app = require('../server');
 
 const expect = chai.expect;
 
