@@ -1,13 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
-const {User} = require('./models');
+const { router: authRouter, localStrategy, jwtStrategy } = require('../auth');
+const {User, Vacation, Memory} = require('./models');
 
 const router = express.Router();
 
-const jsonParser = bodyParser.json();
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
-router.post('/', jsonParser, (req, res) => {
+const jwtAuth = passport.authenticate('jwt', { session: false });
+
+router.use(bodyParser.json());
+
+router.post('/', (req, res) => {
     const requiredFields = ['username', 'password'];
     const missingField = requiredFields.find(field => !(field in req.body));
 
