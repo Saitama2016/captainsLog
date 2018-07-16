@@ -40,8 +40,10 @@ app.get('/api/protected', jwtAuth, (req, res) => {
     });
 });
 
+app.use(express.static('public'));
+
 app.use('*', function (req, res) {
-    res.status(404).json({ message: 'Not Found' });
+    res.status(404).json({ message: 'Page Not Found' });
 });
 
 let server;

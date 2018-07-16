@@ -24,7 +24,7 @@ describe('Auth endpoints', function() {
         return runServer(TEST_DATABASE_URL);
     });
 
-    after (function () {
+    after(function () {
         return closeServer();
     });
 
