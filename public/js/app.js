@@ -1,71 +1,124 @@
-// this is mock data, when the API is create we'll have to return data
-// that looks like this
-
-var MOCK_TRIP_UPDATES = {
-    "tripUpdates": [
-    {
-        "id": "1111111",
-        "arrive": "July 21, 2018",
-        "depart": "July 28, 2018",
-        "city": "Tokyo",
-        "country": "Japan",
-        "description": "Explore every vending machine",
-        "publishedAt": 1234567809
-    },
-    {
-        "id": "2222222",
-        "arrive": "August 17, 2018",
-        "depart": "August 25, 2018",
-        "city": "Manila",
-        "country": "Phillipines",
-        "description": "Meet Matt Tran",
-        "publishedAt": 1234567789
-    },
-    {
-        "id": "3333333",
-        "arrive": "November 15, 2018",
-        "depart": "November 22, 2018",
-        "city": "Dallas",
-        "country": "United States",
-        "description": "Visit Dallas State Fair",
-        "publishedAt": 1234567889
-    },
-    {
-        "id": "4444444",
-        "arrive": "January 11, 2019",
-        "depart": "January 18, 2019",
-        "city": "Toronto",
-        "country": "Canada",
-        "description": "Get discounted medical pills",
-        "publishedAt": 1234567899
-    }
-    ]
-};
-
-function getRecentTripUpdates(callback) {
-    setTimeout(function(){ callback(MOCK_TRIP_UPDATES)}, 1);
+function generateSignUp () {
+    return `<form autocomplete="on">
+        <fieldset>
+            <div class="log"></div>
+            <legend class="loginRegisterTitle"></legend>
+            <label for="username">Username:</label>
+            <input class="usernameSignUp" type="text" name="username" pattern=".{1,}" required title="1 characters minimum" required>
+            <label for="password">Password:</label>
+            <input class="passwordSignUp" type="text" name="password" pattern=".{10, 72}" required title="3 characters minimum" required>
+            <label for="firstName">First Name:</label>
+            <input class="firstnameSignUp" type="text" name="firstName" required>
+            <label for="lastName">Last Name:</label>
+            <input class="lastnameSignUp" type="text" name="lastName" required>
+            <label for="email">email:</label>
+            <input class="emailSignUp" type="email" name="email" required>
+            <button class="loginButton signingUpNewAccount" type="submit">Submit</button>
+            </fieldset>
+    </form>
+    <a href="#" class="login"><p class="toggleReg">LogIn</p></a>`;
 }
 
-function displayTripUpdates(data) {
-    for (index in data.tripUpdates) {
-        $('#vacationLog').append(
-        `
-        <div class="trip">
-            <p class="arrival"> Arrival: ${data.tripUpdates[index].arrive} </p>
-            <p class="departure"> Departure: ${data.tripUpdates[index].depart} </p>
-            <p class="location"> ${data.tripUpdates[index].city}, ${data.tripUpdates[index].country} </p>
-            <p class="journey"> ${data.tripUpdates[index].description} </p>
-            <p><button id="edit">Edit</button> <button id="delete">Delete</button></p>
-        </div>
-        `
-        );
-    }
+function signUp () {
+    $('.loginRegister').on('click', '.signup', function() {
+        $('.loginRegister').html(generateSignUp());
+        $('.loginRegister').addClass("box-structure");
+    })
 }
 
-function getandDisplayTripUpdates() {
-    getRecentTripUpdates(displayTripUpdates);
+function generateLogin() {
+    return `<form autocomplete="on">
+            <fieldset>
+            <div class="log"></div>
+            <legend class="loginRegisterTitle">Glad you came back!</legend>
+            <label for="username">Username:</label>
+            <input class="usernameLogIn" type="text" name="username" required>
+            <label for="password">Password:</label>
+            <input class="passwordLogIn" type="text" name="password" required>
+            <button class="loginButton signingInAcc" type="submit">Submit</button>
+            </fieldset>
+    </form>
+    <a href="#" class="signup"><p class="toggleReg">Sign up</p></a>`;
 }
 
-$(function() {
-    getandDisplayTripUpdates();
-})
+function logIn () {
+    $('.loginRegister').on('click', '.login', function() {
+        $('.loginRegister').html(generateLogin());
+        $('.loginRegister').addClass("box-structure");
+    })
+}
+
+function postAuthLogin(username, password) {
+    $.ajax({
+        type: "POST",
+        url: 'api/auth/login',
+        data: JSON.stringify({
+            "username": username,
+            "password": password
+        }),
+        dataType: 'json',
+        contentType: "application/json",
+        error: error => {
+            console.log(error);
+            if(error.responseText === 'Unauthorized'){
+                $('.loginError').text('The username or password you\'ve entered doesn\'t match any account.');
+            }else {
+                $('.loginError').text('Username/password error');
+            }
+        }
+    })
+    .done(function(json) {
+        window.sessionStorage.accessToken = json.authToken;
+        localStorage.setItem('userId', json.userId);
+        window.location = 'dashboard.html';
+    });
+}
+
+function signInAuth() {
+    $('.loginRegister').on('click', '.signInAcc', function(event) {
+        event.preventDefault();
+        const username = $('.usernameLogIn').val();
+        const password = $('.passwordLogIn').val();
+        postAuthLogin(username, password);
+    });
+}
+
+function signUpAuth() {
+    $('.loginRegister').on('click', '.signingUpNewAccount', function(event) {
+        event.preventDefault();
+        const username = $('.usernameSignUp').val();
+        const password = $('.passwordSignUp').val();
+        const firstname = $('.firstnameSignUp').val();
+        const lastname = $('.lastnameSignUp').val();
+        const email = $('.emailSignUp').val();
+        $.ajax({
+            type: 'POST',
+            url: '/api/users',
+            data: JSON.stringify({
+                "username": username,
+                "password": password,
+                "firstName": firstname,
+                "lastName": lastname,
+                "email": email
+            }),
+            dataType: 'json',
+            contentType: "application/json",
+            error: error => {
+                console.log(error);
+                $('.loginError').text(`${error.responseJSON.location}: ${error.responseJSON.message}`);
+            }
+        })
+        .done(function(json) {
+            postAuthLogin(username, password);
+        });
+    });
+}
+
+function indexPage(){
+    logIn();
+    signUp();
+    signInAuth();
+    signUpAuth();
+}
+
+$(indexPage());

@@ -35,11 +35,22 @@ body, button {
     cursor: pointer;
 }
 
+.fa-life-ring {
+    animation: rotation 2s infinite linear;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 main {
     padding-top: 85px;
 }
 
-#vacationLog {
+#visualTutorial {
     margin-top: 50px;
 }
 
@@ -55,4 +66,18 @@ main {
     border: 1px solid black;
     padding: 10px;
     text-align: center;
+}
+
+.spotlight {
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.step {
+    font-weight: 800;
+    text-align: center;
+}
+
+.badgeIcon {
+    font-size: 2em;
 }
