@@ -13,10 +13,105 @@
 </head>
 <body class="dashboardPage">
     <header role="banner">
-
+            <h1 id="Logo">Captains L<i class="far fa-life-ring"></i>G</h1>
+            <div></div>
+            <nav role="navigation" class="navbar">
+                <div id="closenav"><i class="fas fa-times"></i></div>
+                <div id="about" class="navButton">About</div>
+                <div id="signout" class="navButton"><i class="far fa-user-circle"></i></div>
+            </nav>
     </header>
+    <main>
+        <section>
+            <h1>Welcome Aboard, <span aria-live="assertive"></span>!</h1>
+        </section>
+        <section class="about modal">
+            <div class="closeButton"><i class="fas fa-times"></i></div>
+            <h1></h1>
+            <p></p>
+            <br>
+            <p></p>
+            <br>
+            <div>
+
+            </div>
+        </section>
+        <section role="region" class="startdash modal">
+            <div class="modal-content">
+                <div class="closeButton"><i class="fas fa-times fa-3x"></i></div>
+                <h1></h1>
+                <p></p>
+            </div>
+        </section>
+
+        <section role="region" class="signout modal">
+            <div class="modal-content">
+                <div class="closeButton"><i class="fas fa-times fa-3x"></i></div>
+                <h3></h3>
+                <button class="signOutNo">No, just one minute...</button>
+                <button class="signOutYes">Yes, I'm done!</button>
+            </div>
+        </section>
+
+        <section class="row" role="region">
+            <div class="addboxdashboard col-6">
+                <div class="addVacation">
+                    <h2>Add Vacation <i class="fas fa-plane"></i></h2>
+                </div>
+            </div>
+            <div class="addboxdashboard col-6">
+                <h2>Add Memories:</h2>
+                <div class="memoryList" aria-live="assertive"></div>
+            </div>
+        </section>
+        
+        <section class="vacationFormInput modal" role="region">
+            <form role="form" class="vacationFileInput modal-content">
+                <fieldset class="row">
+                    <div class="closeButton"><i class="fas fa-times fa-3x"></i></div>
+                    <h3>Vacation</h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="city">City:</label>
+                            <br>
+                            <input class="city" type="text" name="cityName">
+                        </div>
+                        <div class="col-6">
+                            <label for="city">Country:</label>
+                            <br>
+                            <input class="country" type="text" name="countryName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="city">Arrival:</label>
+                            <br>
+                            <input class="city" type="datetime-local" name="arrivalDate">
+                        </div>
+                        <div class="col-4">
+                            <label for="city">Departure:</label>
+                            <br>
+                            <input class="country" type="datetime-local" name="departureDate">
+                        </div>
+                    </div>
+                    <div class="">
+                        <button class="btn postbtn" type="submit">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+
+        <section role="region">
+            <h2>Vacations:</h2>
+            <hr>
+            <div class="listofVacations" aria-live="assertive"></div>
+        </section>
+    </main>
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/dashboard.js"></script>
+    <script type="text/javascript" src="js/page.js"></script>
 </body>
 </html>

@@ -5,22 +5,28 @@ function generateSignUp () {
             <legend class="loginRegisterTitle"></legend>
             <label for="username">Username:</label>
             <input class="usernameSignUp" type="text" name="username" pattern=".{1,}" required title="1 characters minimum" required>
+            <br>
             <label for="password">Password:</label>
             <input class="passwordSignUp" type="text" name="password" pattern=".{10, 72}" required title="3 characters minimum" required>
+            <br>
             <label for="firstName">First Name:</label>
             <input class="firstnameSignUp" type="text" name="firstName" required>
+            <br>
             <label for="lastName">Last Name:</label>
             <input class="lastnameSignUp" type="text" name="lastName" required>
-            <label for="email">email:</label>
+            <br>
+            <label for="email">Email:</label>
             <input class="emailSignUp" type="email" name="email" required>
+            <br>
             <button class="loginButton signingUpNewAccount" type="submit">Submit</button>
             </fieldset>
     </form>
-    <a href="#" class="login"><p class="toggleReg">LogIn</p></a>`;
+    <a href="#" id="login"><p class="toggleReg">LogIn</p></a>`;
 }
 
 function signUp () {
-    $('.loginRegister').on('click', '.signup', function() {
+    $('.loginRegister').on('click', '#signUp', function() {
+        console.log('clicked!');
         $('.loginRegister').html(generateSignUp());
         $('.loginRegister').addClass("box-structure");
     })
@@ -33,16 +39,18 @@ function generateLogin() {
             <legend class="loginRegisterTitle">Glad you came back!</legend>
             <label for="username">Username:</label>
             <input class="usernameLogIn" type="text" name="username" required>
+            <br>
             <label for="password">Password:</label>
             <input class="passwordLogIn" type="text" name="password" required>
+            <br>
             <button class="loginButton signingInAcc" type="submit">Submit</button>
             </fieldset>
     </form>
-    <a href="#" class="signup"><p class="toggleReg">Sign up</p></a>`;
+    <a href="#" id="signUp"><p class="toggleReg">Sign up</p></a>`;
 }
 
 function logIn () {
-    $('.loginRegister').on('click', '.login', function() {
+    $('.loginRegister').on('click', '#login', function() {
         $('.loginRegister').html(generateLogin());
         $('.loginRegister').addClass("box-structure");
     })
