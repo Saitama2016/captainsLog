@@ -5,12 +5,14 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const Strategy = require('passport-local').Strategy;
+
 
 mongoose.Promise = global.Promise;
 
-const { DATABASE_URL, PORT } = require('./config');
-const { router: usersRouter } = require('./users');
-const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+// const { DATABASE_URL, PORT } = require('./config');
+// const { router: usersRouter } = require('./users');
+// const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
 const app = express();
 
@@ -29,6 +31,7 @@ app.use(function (req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
+app.use(express.static('public'));
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 
@@ -39,8 +42,6 @@ app.get('/api/protected', jwtAuth, (req, res) => {
         data: 'rosebud'
     });
 });
-
-app.use(express.static('public'));
 
 app.use('*', function (req, res) {
     res.status(404).json({ message: 'Page Not Found' });
