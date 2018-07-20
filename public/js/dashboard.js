@@ -156,12 +156,12 @@ function vacationHTML(vacObj) {
 
 function memoriesHTML(vacObj) {
     let vacationId = vacObj.id;
-    let city = vacObj.cityName;
-    let country = vacObj.countryName;
+    let date = vacObj.date
+    let event = vacObj.eventName;
     return `
         <div id='${vacationId}' class='selectVac'>
             <div id=''>
-                <p><span>${city}, ${country}</span></p>
+                <p><span>${event}</span></p>
             </div>
         </div>
     `;

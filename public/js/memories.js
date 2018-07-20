@@ -127,7 +127,9 @@ function vacationHTML(obj) {
                 </div>
             </div>
             <div class="">
-                <button class="btn postbtn" type="submit">Submit</button>
+                <input id='editVacation' class='button nutrbtn' type='button' value='Edit'>
+                <input id='deleteVacation' class='button negbtn disabledInp' type='button' value='Delete Vacation Info & Memories' disabled>
+                <input class="btn postbtn" type="submit" value="Submit" disabled>
             </div>
             </fieldset>
     </form>`;
@@ -290,7 +292,7 @@ $('.memoryList').on('click', '.viewDes', function() {
     ($(this).text() == '+')? $(this).text('-'): $(this).text('+');
 });
 
-$('.addMemoryBtn').on('click', function() {
+$('.addMemoButton').on('click', function() {
     $('.memoAdd').fadeIn();
 });
 

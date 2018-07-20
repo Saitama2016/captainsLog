@@ -3,7 +3,8 @@ const chaiHttp = require('chai-http');
 const jwt = require('jsonwebtoken');
 
 const { app, runServer, closeServer } = require('../server');
-const { TEST_DATABASE_URL, JWT_SECRET } = require('../config');
+const { JWT_SECRET } = require('../config');
+const { TEST_DATABASE_URL } = require('../config');
 const { User } = require('../users');
 
 const expect = chai.expect;
@@ -62,7 +63,7 @@ describe('Auth endpoints', function() {
                     expect(res).to.have.status(400);
                 });
             });
-        it('Should reject requests with incorrest usernames', function () {
+        it('Should reject requests with incorrect usernames', function () {
             return chai 
                 .request(app)
                 .post('api/auth/login')
@@ -80,7 +81,7 @@ describe('Auth endpoints', function() {
                 });
         });
         
-        it('Should reject requests with incorrest passwords', function () {
+        it('Should reject requests with incorrect passwords', function () {
             return chai 
                 .request(app)
                 .post('api/auth/login')
