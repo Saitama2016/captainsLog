@@ -20,8 +20,8 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    firstName: {type: String},
-    lastName: {type: String},
+    firstName: {type: String, default: ''},
+    lastName: {type: String, default: ''},
     email: {
         type: String,
         required: true,
@@ -39,42 +39,56 @@ UserSchema.statics.hashPassword = function(password) {
     return bcrypt.hash(password, 10);
 };
 
+UserSchema.methods.serialize = function() {
+    return {
+        id: this._id,
+        username: this.username || '',
+        firstName: this.firstName || '',
+        lastName: this.lastName || '',
+        email: this.email
+    }
+}
+
 //Create a Scehma for vacationLog to outline the desired Object
 const vacationLogSchema = mongoose.Schema({
-    duration: {
-        arrival: Date,
-        departure: Date
-    },
-    location: {
-        city: String,
-        country: String
-    },
-    description: {type: String, required: true},
-    created: {type: Date, default: Date.now}
+    arrival: String,
+    departure: String,
+    city: String,
+    country: String,
+    userID: String
 });
 
-//Use virtual method for vacationLog Schema to create locationName
-//Virtual creates additional properties on the fly [DRY]
-vacationLogSchema.virtual('locationName').get(function() {
-    return `${this.location.city}, ${this.location.country}`.trim();
-});
-
-//Use virtual method to create a property to log duration of user's vacation
-vacationLogSchema.virtual('durationLength').get(function() {
-    return `Arrival: ${this.duration.arrival} Departure: ${this.location.country}`.trim();
-});
+const memoriesSchema = mongoose.Schema({
+    event: String,
+    date: String,
+    description: String,
+    vacationId: String
+})
 
 //Use serialize method to return desired Vacation Log object
 vacationLogSchema.methods.serialize = function() {
     return {
         id: this._id,
-        duration: this.durationLength,
-        location: this.locationName,
-        description: this.description,
-        created: this.created
+        arrival: this.arrival || '',
+        departure: this.departure || '',
+        city: this.city || '',
+        country: this.country || '',
+        userID: this.userID
     };
 };
 
-const VacationLog = mongoose.model('VacationLog', vacationLogSchema);
+memoriesSchema.methods.serialize = function() {
+    return {
+        id: this._id,
+        event: this.event,
+        date: this.date,
+        description: this.description,
+        vacationID: this.vacationID
+    };
+};
 
-module.exports = {VacationLog};
+const User =  mongoose.model('User', UserSchema);
+const Vacation = mongoose.model('VacationLog', vacationLogSchema);
+const Memory = mongoose.model('Memory', memoriesSchema);
+
+module.exports = {User, Vacation, Memory};
