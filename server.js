@@ -16,7 +16,7 @@ const Strategy = require('passport-local').Strategy;
 
 var app = express();
 
-app.use('/public', express.static(process.cwd() + '/public'))
+// app.use('/public', express.static(process.cwd() + '/public'))
 
 // app.use(function (req, res, next) {
 //     res.header('Access-Control-Allow-Origin', '*');
@@ -87,9 +87,9 @@ app.use('/public', express.static(process.cwd() + '/public'))
 
 // module.exports = { runServer, app, closeServer };
 
+// app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-module.exports = function(app) {
 app.get('/', function(req, res) {
     res.render('pages/index');
 });
@@ -97,7 +97,7 @@ app.get('/', function(req, res) {
 app.get('/about', function(req, res) {
     res.render('pages/about');
 });
-};
+
 
 app.listen(8080);
 console.log('8080 is the right port!')
