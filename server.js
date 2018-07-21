@@ -7,91 +7,47 @@ const morgan = require('morgan');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 
+passport.use(new Strategy(
+    function(username, passowrd, cb) {
+        db.users.findByUsername(username, function(err, user) {
+            if (err) { return eb(err); }
+            if (!user) { return cb(null, false); }
+            if(user.password != password) { return cb(null, false); }
+            return cb(null, user);
+        })
+    }));
 
-// mongoose.Promise = global.Promise;
+passport.serializeUser(function(user, cb){
+    cb(null, user.id);
+});
 
-// const { DATABASE_URL, PORT } = require('./config');
-// const { router: usersRouter } = require('./users');
-// const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+passport.deserializeUser(function(id, cb) {
+    db.users.findById(id, function (err, user) {
+        if(err) { return cb(err); }
+        cb(null, user);
+    });
+});
 
 var app = express();
 
-// app.use('/public', express.static(process.cwd() + '/public'))
-
-// app.use(function (req, res, next) {
-//     res.header('Access-Control-Allow-Origin', '*');
-//     res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
-//     res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
-//     if (req.method === 'OPTIONS') {
-//         return res.send(204);
-//     }
-//     next();
-// });
-
-// passport.use(localStrategy);
-// passport.use(jwtStrategy);
-
-// app.use(express.static('public'));
-// app.use('/api/users/', usersRouter);
-// app.use('/api/auth/', authRouter);
-
-// const jwtAuth = passport.authenticate('jwt', { session: false });
-
-// app.get('/api/protected', jwtAuth, (req, res) => {
-//     return res.json({
-//         data: 'rosebud'
-//     });
-// });
-
-// app.use('*', function (req, res) {
-//     res.status(404).json({ message: 'Page Not Found' });
-// });
-
-// let server;
-
-// function runServer(databaseUrl = DATABASE_URL, port = PORT) {
-//     return new Promise((resolve, reject) => {
-//         mongoose.connect(databaseUrl, err => {
-//             if (err) {
-//                 return reject(err);
-//             }
-//             server = app.listen(port, () => {
-//                 console.log(`Your app is listening on port ${port}`);
-//                 resolve();
-//             })
-//             .on('error', err => {
-//                 mongoose.disconnect();
-//                 reject(err);
-//             });
-//         });
-//     });
-// }
-
-// function closeServer() {
-//     return mongoose.disconnect().then(() => {
-//         return new Promise((resolve, reject) => {
-//             console.log('Closing server');
-//             server.close(err => {
-//                 if (err) {
-//                     return reject(err);
-//                 }
-//                 resolve();
-//             });
-//         });
-//     });
-// }
-
-// if (require.main === module) {
-//     runServer( ).catch(err => console.error(err));
-// }
-
-// module.exports = { runServer, app, closeServer };
 
 // app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+app.use(require('morgan')('combined'));
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('express-session')({ secret: 'ultra instinct', resave: false, saveUninitialized: false }));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.get('/', function(req, res) {
     res.render('pages/index');
+});
+
+app.get('/login', function(req, res) {
+    res.render('pages/login');
 });
 
 app.get('/about', function(req, res) {
