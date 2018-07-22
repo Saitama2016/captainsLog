@@ -2,11 +2,6 @@
     $(document).ready(() => {
         $('.signOutYes').click(() => {
             console.log('click!');
-            $.ajax({
-                type: 'GET',
-                url: `/`,
-
-            });
         });
 
         $('.closeAbout').click(() => {
@@ -15,10 +10,19 @@
 
         $('.signOutOpt').click(() => {
             console.log('click');
-            $('.signout').show();
+            $('.signout').fadeIn();
+        });
+
+        $('.aboutOpt').click(() => {
+            console.log('click');
+            $('.about').fadeIn();
         });
 
         $('.closeSignOut').click(() => {
+            $('.signout').fadeOut();
+        });
+
+        $('.signOutNo').click(() => {
             $('.signout').fadeOut();
         });
 
@@ -26,8 +30,16 @@
             $('.vacationFormInput').fadeIn();
         })
 
+        $('.addMemories').click(() => {
+            $('.memoriesAdd').fadeIn();
+        })
+
         $('.closeVacForm').click(() => {
             $('.vacationFormInput').fadeOut();
+        });
+
+        $('.closeMemoForm').click(() => {
+            $('.memoriesAdd').fadeOut();
         });
 
     });

@@ -12,6 +12,7 @@
         <% include ../partials/header %>
         <nav>
             <button class="signOutOpt">SignOut?</button>
+            <button class="aboutOpt">About</button>
         </nav>
     </header>
     <main>
@@ -22,7 +23,7 @@
         <section class="about modal">
             <button class="closeButton closeAbout"><i class="fas fa-times fa-3x"></i></button>
             <h1>How to use Captains Log!</h1>
-            <p>Captains Logs allows you to navigate and record vacations on your schedule and inmagination.</p>
+            <p>Captains Logs allows you to navigate and record vacations on your schedule and imagination.</p>
             <br>
             <p>Include the time of your flight and return as friendly reminders. In addition, create memories by inputting 
                 events you look forward during your trip. We remember memories, not days, go out and explore!
@@ -43,9 +44,9 @@
         <section role="region" class="signout modal">
             <div class="modal-content">
                 <button class="closeButton closeSignOut"><i class="fas fa-times fa-3x"></i></button>
-                <h3></h3>
+                <h3>Do you want to sign out?</h3>
                 <button class="signOutNo">No, just one minute...</button>
-                <button class="signOutYes">Yes, I'm done!</button>
+                <button class="signOutYes"><a href="/">Yes, I'm done!</a></button>
             </div>
         </section>
     
@@ -96,7 +97,37 @@
         <section role="region">
             <h2>Vacations:</h2>
             <hr>
-            <div class="listofVacations" aria-live="assertive"></div>
+            <div class="listofVacations" aria-live="assertive">
+                <ul>
+                    <li class="vacInfo">
+                        <button class="viewEdit"><a href="/memory">View/Edit</a></button>
+                        <div class="row">
+                                <div class="col-6">
+                                    <label for="city"><strong>City:</strong></label>
+                                    <br>
+                                    <p>Tokyo</p>
+                                </div>
+                                <div class="col-6">
+                                    <label for="city"><strong>Country: </strong></label>
+                                    <br>
+                                    <p>Japan</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="city"><strong>Flight: </strong></label>
+                                    <br>
+                                    <p>06/23/2018 2:30PM</p>
+                                </div>
+                                <div class="col-6">
+                                    <label for="city"><strong>Depature: </strong></label>
+                                    <br>
+                                    <p>06/30/2018 12:30PM</p>
+                                </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </section>
     </section>
     </main>
