@@ -46,8 +46,20 @@ app.get('/', function(req, res) {
     res.render('pages/index');
 });
 
-app.get('/login', function(req, res) {
-    res.render('pages/login');
+app.post('/vacations', function(req, res) {
+    res.render('pages/vacations');
+});
+
+app.get('/vacations', function(req, res) {
+    res.render('pages/vacations');
+});
+
+app.get('/memory', function(req, res) {
+    res.render('pages/memory');
+});
+
+app.post('/about', function(req,res) {
+    res.render('pages/about');
 });
 
 app.get('/about', function(req, res) {

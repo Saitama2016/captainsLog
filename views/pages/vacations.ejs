@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%include ../partials/head %>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    </head>
+<body>
+    <header>
+        <% include ../partials/header %>
+    </header>
+    <main>
+    <section class="vacationPage">
+        <section role="dashboard">
+            <h1>Welcome Aboard, <span aria-live="assertive"></span>!</h1>
+        </section>
+        <section class="about modal">
+            <button class="closeButton"><i class="fas fa-times fa-3x"></i></button>
+            <h1>How to use Captains Log!</h1>
+            <p>Captains Logs allows you to navigate and record vacations on your schedule and inmagination.</p>
+            <br>
+            <p>Include the time of your flight and return as friendly reminders. In addition, create memories by inputting 
+                events you look forward during your trip. We remember memories, not days, go out and explore!
+            </p>
+            <br>
+            <div>
+    
+            </div>
+        </section>
+        <section role="region" class="startdash modal">
+            <div class="modal-content">
+                <button class="closeButton"><i class="fas fa-times fa-3x"></i></button>
+                <h1></h1>
+                <p></p>
+            </div>
+        </section>
+    
+        <section role="region" class="signout modal">
+            <div class="modal-content">
+                <button class="closeButton"><i class="fas fa-times fa-3x"></i></button>
+                <h3></h3>
+                <button class="signOutNo">No, just one minute...</button>
+                <button class="signOutYes">Yes, I'm done!</button>
+            </div>
+        </section>
+    
+        <section class="row" role="region">
+            <div class="addboxdashboard col-6">
+                <button class="addVacation">
+                    <h2>Add Vacation <i class="fas fa-plane"></i></h2>
+                </button>
+            </div>
+        </section>
+        
+        <section class="vacationFormInput modal" role="region">
+            <form role="form" class="vacationFileInput modal-content">
+                <fieldset class="row">
+                    <button class="closeButton"><i class="fas fa-times fa-3x"></i></button>
+                    <h3>Vacation</h3>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="city">City:</label>
+                            <br>
+                            <input class="city" type="text" name="cityName">
+                        </div>
+                        <div class="col-6">
+                            <label for="city">Country:</label>
+                            <br>
+                            <input class="country" type="text" name="countryName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="city">Flight:</label>
+                            <br>
+                            <input class="city" type="datetime-local" name="arrivalDate">
+                        </div>
+                        <div class="col-6">
+                            <label for="city">Departure:</label>
+                            <br>
+                            <input class="country" type="datetime-local" name="departureDate">
+                        </div>
+                    </div>
+                    <div class="">
+                        <button class="btn postbtn" type="submit">Submit</button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    
+        <section role="region">
+            <h2>Vacations:</h2>
+            <hr>
+            <div class="listofVacations" aria-live="assertive"></div>
+        </section>
+    </section>
+    </main>
+</body>
+</html>
