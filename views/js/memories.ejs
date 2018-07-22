@@ -1,11 +1,27 @@
 <script>
     $(document).ready(() => {
         $('.signOutYes').click(() => {
-            $('.landingPage').show();
-            $('.loginRegister').show();
-            $('.memoryList').hide();
-        })
-    })
+            console.log('click!');
+            $.ajax({
+                type: 'GET',
+                url: `/`,
+
+            });
+        });
+
+        $('.closeAbout').click(() => {
+            $('.about').fadeOut();
+        });
+
+        $('.closeSignOut').click(() => {
+            $('.signout').fadeOut();
+        });
+
+        $('.closeVacForm').click(() => {
+            $('.vacationFileInput').fadeOut();
+        });
+
+    });
 </script>
 
 

@@ -1,14 +1,4 @@
-<script>
-    $(document).ready(() => {
-        $('.signOutYes').click(() => {
-            $('.landingPage').show();
-            $('.vacationPage').hide();
-            $('.loginRegister').show();
-        });
-    });
-</script>
-
-<!-- // const userId = localStorage.getItem('userId');
+// const userId = localStorage.getItem('userId');
 
 // function getUserInfo() {
 //     $.ajax({
@@ -201,4 +191,4 @@
 //     getAllVacInputs();
 // }
 
-// $(runDashBoard()); -->
+// $(runDashBoard());

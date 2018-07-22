@@ -1,0 +1,29 @@
+<script>
+    $(document).ready(() => {
+        $('.signOutYes').click(() => {
+            console.log('click!');
+            $.ajax({
+                type: 'GET',
+                url: `/`,
+
+            });
+        });
+
+        $('.closeAbout').click(() => {
+            $('.about').fadeOut();
+        });
+
+        $('.closeSignOut').click(() => {
+            $('.signout').fadeOut();
+        });
+
+        $('.addVacation').click(() => {
+            $('.vacationFormInput').fadeIn();
+        })
+
+        $('.closeVacForm').click(() => {
+            $('.vacationFormInput').fadeOut();
+        });
+
+    });
+</script>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%include ../partials/head %>
+        <% include ../partials/head %>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+        <% include ../js/vacButtons %>
     </head>
 <body>
     <header>
@@ -16,7 +17,7 @@
             <h1>Welcome Aboard, <span aria-live="assertive"></span>!</h1>
         </section>
         <section class="about modal">
-            <button class="closeButton"><i class="fas fa-times fa-3x"></i></button>
+            <button class="closeButton closeAbout"><i class="fas fa-times fa-3x"></i></button>
             <h1>How to use Captains Log!</h1>
             <p>Captains Logs allows you to navigate and record vacations on your schedule and inmagination.</p>
             <br>
@@ -28,17 +29,17 @@
     
             </div>
         </section>
-        <section role="region" class="startdash modal">
+        <!-- <section role="region" class="startdash modal">
             <div class="modal-content">
                 <button class="closeButton"><i class="fas fa-times fa-3x"></i></button>
                 <h1></h1>
                 <p></p>
             </div>
-        </section>
+        </section> -->
     
         <section role="region" class="signout modal">
             <div class="modal-content">
-                <button class="closeButton"><i class="fas fa-times fa-3x"></i></button>
+                <button class="closeButton closeSignOut"><i class="fas fa-times fa-3x"></i></button>
                 <h3></h3>
                 <button class="signOutNo">No, just one minute...</button>
                 <button class="signOutYes">Yes, I'm done!</button>
@@ -54,32 +55,32 @@
         </section>
         
         <section class="vacationFormInput modal" role="region">
-            <form role="form" class="vacationFileInput modal-content">
+            <button class="closeButton closeVacForm"><i class="fas fa-times fa-3x"></i></button>
+            <form role="form" class="vacationFileInput">
                 <fieldset class="row">
-                    <button class="closeButton"><i class="fas fa-times fa-3x"></i></button>
                     <h3>Vacation</h3>
                     <div class="row">
                         <div class="col-6">
                             <label for="city">City:</label>
                             <br>
-                            <input class="city" type="text" name="cityName">
+                            <input class="city" type="text">
                         </div>
                         <div class="col-6">
                             <label for="city">Country:</label>
                             <br>
-                            <input class="country" type="text" name="countryName">
+                            <input class="country" type="text">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <label for="city">Flight:</label>
                             <br>
-                            <input class="city" type="datetime-local" name="arrivalDate">
+                            <input class="city" type="datetime-local">
                         </div>
                         <div class="col-6">
                             <label for="city">Departure:</label>
                             <br>
-                            <input class="country" type="datetime-local" name="departureDate">
+                            <input class="country" type="datetime-local">
                         </div>
                     </div>
                     <div class="">

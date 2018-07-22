@@ -3,7 +3,7 @@
 
     $('#signUp').click(() => {
     console.log('clicked!');
-    $('.loginRegister').append(`<form class="signUpForm" action="/about" autocomplete="on" method="post">
+    $('.loginRegister').append(`<form class="signUpForm" action="/vacations" autocomplete="on" method="post">
      <fieldset>
          <div class="loginError"></div>
          <legend class="loginRegisterTitle"></legend>
@@ -28,34 +28,8 @@
     <a href="#" id="login"><p class="toggleReg">LogIn</p></a>`);
 
     $('.loginForm').hide();
+    $('#login').show();
     $('#signUp').hide();
-    });
-
-    $('.siginingUpNewAccount').click((event) => {
-        event.preventDefault();
-        const username = $('.usernameSignUp').val();
-        const password = $('.passwordSignUp').val();
-        const firstname = $('.firstnameSignUp').val();
-        const lastname = $('.lastnameSignUp').val();
-        const email = $('.emailSignUp').val();
-        $.ajax({
-            data: JSON.stringify({
-                "username": username,
-                "password": password,
-                "firstName": firstname,
-                "lastName": lastname,
-                "email": email
-            }),
-            dataType: 'json',
-            contentType: "application/json",
-            error: error => {
-                console.log(error);
-                $('.loginError').text(`${error.responseJSON.location}: ${error.responseJSON.message}`);
-            }
-        })
-        .done(function(json){
-            postAuthLogin(username, password);
-        });
     });
 
     $('#login').click(() => {
@@ -77,12 +51,8 @@
 
         $('.signUpForm').hide();
         $('#login').hide();
-        $('.landingPage').hide();
-        $('.vacationPage').show();
-        $('.memoryList').show();
-        // $('.vacationFormInput').hide();
+        ('#signUp').show();
         $('.loginForm').show();
-
     });
 });
 
