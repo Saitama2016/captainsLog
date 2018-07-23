@@ -17,6 +17,8 @@ const { PORT, DATABASE_URL } = require('./config');
 
 var app = express();
 
+app.use(morgan('common'));
+
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
@@ -33,9 +35,19 @@ passport.use(jwtStrategy);
 app.use('api/users', usersRouter);
 app.use('/api/auth', authRouter);
 
-// app.use('*', function(req, res) {
-//     res.status(404).json({ message: 'Page Not Found '});
-// });
+const jwtAuth = passport.authenticate('jwt', { session: false });
+
+app.get('/api/protected', jwtAuth, (req,res) => {
+    return res.json({
+        data: 'rosebud'
+    });
+});
+
+app.use(express.static('public'));
+
+app.use('*', function(req, res) {
+    res.status(404).json({ message: 'Page Not Found '});
+});
 
 let server;
 
@@ -93,53 +105,50 @@ passport.deserializeUser(function(id, cb) {
 });
 
 
-// app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-app.use(require('morgan')('combined'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(require('morgan')('combined'));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(require('cookie-parser')());
 // app.use(require('express-session')({ secret: 'ultra instinct', resave: false, saveUninitialized: false }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', function(req, res) {
-    res.render('pages/index');
-});
+// app.get('/', function(req, res) {
+//     res.render('index.html');
+// });
 
-app.post('/vacations', function(req, res) {
-    res.render('pages/vacations');
-});
+// app.post('/vacations', function(req, res) {
+//     res.render('pages/vacations');
+// });
 
-app.get('/vacations', function(req, res) {
-    res.render('pages/vacations', {user: req.params.name});
-});
+// app.get('/vacations', function(req, res) {
+//     res.render('pages/vacations', {user: req.params.name});
+// });
 
-app.post('/vacations/:name', function(req, res) {
-    res.render('pages/vacations', {user: req.params.name});
-});
+// app.post('/vacations/:name', function(req, res) {
+//     res.render('pages/vacations', {user: req.params.name});
+// });
 
-app.get('/vacations/:name', function(req, res) {
-    res.render('pages/vacations', {user: req.params.name});
-});
+// app.get('/vacations/:name', function(req, res) {
+//     res.render('pages/vacations', {user: req.params.name});
+// });
 
-app.post('/memory', function(req, res) {
-    res.render('pages/memory');
-});
+// app.post('/memory', function(req, res) {
+//     res.render('pages/memory');
+// });
 
-app.get('/memory', function(req, res) {
-    res.render('pages/memory');
-});
+// app.get('/memory', function(req, res) {
+//     res.render('pages/memory');
+// });
 
-app.post('/about', function(req,res) {
-    res.render('pages/about');
-});
+// app.post('/about', function(req,res) {
+//     res.render('pages/about');
+// });
 
-app.get('/about', function(req, res) {
-    res.render('pages/about');
-});
+// app.get('/about', function(req, res) {
+//     res.render('pages/about');
+// });
 
 if (require.main === module) {
     runServer().catch(err => console.error(err));

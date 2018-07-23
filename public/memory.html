@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Captains Log</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/grid.css"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/memories.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id="Logo">Captains L<i class="far fa-life-ring"></i>G</h1>
+        <nav>
+            <button class="signOutOpt">SignOut?</button>
+            <button class="aboutOpt">About</button>
+        </nav>
+    </header>
+<main>
+<section class="memoryList">
+    <section role="dashboard">
+            <h1>Welcome Aboard, <span aria-live="assertive"></span>!</h1>
+        </section>
+        <button><a href="/vacations/"><i class="fas fa-arrow-circle-left"></i> Back to Vacations Log</a></button>
+        <section class="about modal">
+            <button class="closeButton closeAbout"><i class="fas fa-times fa-3x"></i></button>
+            <h1>How to use Captains Log!</h1>
+            <p>Captains Logs allows you to navigate and record vacations on your schedule and imagination.</p>
+            <br>
+            <p>Include the time of your flight and return as friendly reminders. In addition, create memories by inputting 
+                events you look forward during your trip. We remember memories, not days, go out and explore!
+            </p>
+            <br>
+            <div>
+    
+            </div>
+    </section>
+    <section role="region" class="startMemo modal">
+        <div class="modal-content" style="border: solid">
+            <button class="closeButton"><i class="fas fa-times fa-3x"></i></button>
+            <h1>Start Making Memories</h1>
+            <p>You currently have no memories. Click the "Add Memory" button to enter the event of the memory</p>
+        </div>
+    </section>
+
+    <section role="region" class="signout modal">
+        <div class="modal-content" style="border: solid">
+            <button class="closeButton closeSignOut"><i class="fas fa-times fa-3x"></i></button>
+                <h3>Do you want to Sign Out?</h3>
+                <button class="signOutNo">No, just one minute...</button>
+                <button class="signOutYes"><a href="/">Yes, I'm done!</a></button>
+        </div>
+    </section>
+
+    <section class="row" role="region">
+        <div class="addboxdashboard col-6">
+            <button class="addMemories">
+                <h2>Add Memories <i class="fas fa-smile"></i></h2>
+            </button>
+        </div>
+    </section>
+
+    <section role="region" class="vacationEdit modal" aria-live="assertive"></section>
+    
+    <section role="region" class="memoriesEdit modal" aria-live="assertive"></section>
+
+    <section role="region" class="vacationInfo" aria-live="assertive">
+        <div>
+            <img class="hotelicon">
+            <h1></h1>
+        </div>
+        <a class="vacationEdit" href="#">view/edit</a>
+    </section>
+
+    <section role="region" class="memoriesAdd modal" style="border: solid">
+        <button class="closeButton closeMemoForm"><i class="fas fa-times fa-3x"></i></button>
+        <form role="form" class="memoInput modal-content">
+            <fieldset class="row">
+                <div class="col-3">
+                    <label for="date">Date:</label>
+                    <br>
+                    <input class="memoDate" type="date" name="date" required>
+                    <br>
+                    <label for="event">Event:</label>
+                    <br>
+                    <input class="memoTitle" type="text" name="memories" required>
+                </div>
+
+                <div class="col-6">
+                    <label for="description">Description:</label>
+                    <br>
+                    <textarea class="memoDescription" rows="5" name="description" required></textarea>
+                </div>
+                <div class="col-3">
+                    <button class="button Posbutton" type="submit">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+    <section role="region">
+        <h2>Memories:</h2>
+        <hr>
+        <div class="listOfMemories" aria-live="assertive"></div>
+    </section>
+</section>
+</main>
+</body>
+</html>
