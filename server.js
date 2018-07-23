@@ -3,12 +3,76 @@
 require('dotenv').config();
 var express = require('express');
 const morgan = require('morgan');
-// const mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 
+const { router: usersRouter } = require('./users');
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+
+mongoose.Promise = global.Promise;
+
+const { PORT, DATABASE_URL } = require('./config');
+
+var app = express();
+
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+    if (req.method === 'OPTIONS'){
+        return res.send(204);
+    }
+    next();
+});
+
+passport.use(localStrategy);
+passport.use(jwtStrategy);
+
+app.use('api/users', usersRouter);
+app.use('/api/auth', authRouter);
+
+// app.use('*', function(req, res) {
+//     res.status(404).json({ message: 'Page Not Found '});
+// });
+
+let server;
+
+function runServer(databaseUrl = DATABASE_URL, port = PORT) {
+    return new Promise((resolve, reject) => {
+        mongoose.connect(databaseUrl, err => {
+            if (err) {
+                return reject(err);
+            }
+            server = app.listen(port, () => {
+                console.log(`Your app is listening on port ${port}`);
+                resolve();
+            })
+            .on('error', err => {
+                mongoose.disconnect();
+                reject(err);
+            });
+        });
+    });
+}
+
+function closeServer() {
+    return mongoose.disconnect().then(() => {
+        return new Promise((resolve, reject) => {
+            console.log('Closing server');
+            server.close(err => {
+                if (err) {
+                    return reject(err);
+                }
+                resolve();
+            });
+        });
+    });
+}
+
 passport.use(new Strategy(
-    function(username, passowrd, cb) {
+    function(username, password, cb) {
         db.users.findByUsername(username, function(err, user) {
             if (err) { return eb(err); }
             if (!user) { return cb(null, false); }
@@ -28,15 +92,14 @@ passport.deserializeUser(function(id, cb) {
     });
 });
 
-var app = express();
-
 
 // app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.use(require('morgan')('combined'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(require('cookie-parser')());
-// app.use(require('body-parser').urlencoded({ extended: true }));
 // app.use(require('express-session')({ secret: 'ultra instinct', resave: false, saveUninitialized: false }));
 
 app.use(passport.initialize());
@@ -51,7 +114,19 @@ app.post('/vacations', function(req, res) {
 });
 
 app.get('/vacations', function(req, res) {
-    res.render('pages/vacations');
+    res.render('pages/vacations', {user: req.params.name});
+});
+
+app.post('/vacations/:name', function(req, res) {
+    res.render('pages/vacations', {user: req.params.name});
+});
+
+app.get('/vacations/:name', function(req, res) {
+    res.render('pages/vacations', {user: req.params.name});
+});
+
+app.post('/memory', function(req, res) {
+    res.render('pages/memory');
 });
 
 app.get('/memory', function(req, res) {
@@ -66,6 +141,10 @@ app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
+if (require.main === module) {
+    runServer().catch(err => console.error(err));
+}
 
-app.listen(8080);
-console.log('8080 is the right port!')
+module.exports = { app, runServer, closeServer };
+// app.listen(8080);
+// console.log('8080 is the right port!')

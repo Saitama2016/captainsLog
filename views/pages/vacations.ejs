@@ -18,7 +18,7 @@
     <main>
     <section class="vacationPage">
         <section role="dashboard">
-            <h1>Welcome Aboard, <span aria-live="assertive"></span>!</h1>
+            <h1>Welcome Aboard, <span aria-live="assertive"><%= user %></span>!</h1>
         </section>
         <section class="about modal">
             <button class="closeButton closeAbout"><i class="fas fa-times fa-3x"></i></button>
@@ -33,13 +33,15 @@
     
             </div>
         </section>
-        <!-- <section role="region" class="startdash modal">
+
+            
+        <section role="region" class="startdash modal">
             <div class="modal-content">
                 <button class="closeButton"><i class="fas fa-times fa-3x"></i></button>
-                <h1></h1>
-                <p></p>
+                <h1>Get started!</h1>
+                <p>You currently have no Vacations. Click "Add Vacation" to enter your vacation info.</p>
             </div>
-        </section> -->
+        </section>
     
         <section role="region" class="signout modal">
             <div class="modal-content">
@@ -60,7 +62,7 @@
         
         <section class="vacationFormInput modal" role="region">
             <button class="closeButton closeVacForm"><i class="fas fa-times fa-3x"></i></button>
-            <form role="form" class="vacationFileInput">
+            <form role="form" class="vacationFileInput modal-content">
                 <fieldset class="row">
                     <h3>Vacation</h3>
                     <div class="row">
@@ -70,21 +72,21 @@
                             <input class="city" type="text">
                         </div>
                         <div class="col-6">
-                            <label for="city">Country:</label>
+                            <label for="country">Country:</label>
                             <br>
                             <input class="country" type="text">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <label for="city">Flight:</label>
+                            <label for="flight">Flight:</label>
                             <br>
-                            <input class="city" type="datetime-local">
+                            <input class="flight" type="datetime-local">
                         </div>
                         <div class="col-6">
-                            <label for="city">Departure:</label>
+                            <label for="departure">Departure:</label>
                             <br>
-                            <input class="country" type="datetime-local">
+                            <input class="departure" type="datetime-local">
                         </div>
                     </div>
                     <div class="">
