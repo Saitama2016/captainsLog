@@ -3,6 +3,7 @@
 function logIn() {
     $('.loginRegister').on('click', '#login', function () {
         $('.loginRegister').html(logInTemplate());
+        $('.loginRegister').addClass("box-structure");
 
         $('.signUpForm').hide();
         $('#login').hide();

@@ -10,10 +10,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Cardo" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-        <script type="text/javascript" src="js/vacButtons.js"></script>
     </head>
 <body>
     <header>
@@ -26,7 +22,7 @@
     <main>
     <section class="vacationPage">
         <section role="dashboard">
-            <h1>Welcome Aboard, <span aria-live="assertive"><%= user %></span>!</h1>
+            <h1>Welcome Aboard, <span class="userGreeting" aria-live="assertive"></span>!</h1>
         </section>
         <section class="about modal">
             <button class="closeButton closeAbout"><i class="fas fa-times fa-3x"></i></button>
@@ -141,5 +137,9 @@
         </section>
     </section>
     </main>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/vacButtons.js"></script>
 </body>
 </html>

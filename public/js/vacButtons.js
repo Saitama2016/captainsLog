@@ -12,13 +12,13 @@ function getUserInfo() {
         },
         error: error => {
             if(error.responseText === 'Unauthorized') {
-                window.location = '/';
+                window.location = 'index.html';
             }
             console.log(error);
         },
         success: function(json) {
             let firstName = json.firstName
-            // $('')
+            $('.userGreeting').text(firstName)
         }
     })
 }
@@ -42,7 +42,8 @@ function submitVacationForm(){
                 'city': city,
                 'country': country,
                 'flight': flight,
-                'departure': departure
+                'departure': departure,
+                'userID': userId
             }),
             dataType: 'json',
             contentType: "application/json",
@@ -69,7 +70,7 @@ function clearInputs() {
 function getAllVacInputs() {
     $.ajax({
         type: 'GET',
-        url: `/api/users/baby/${userId}`,
+        url: `/api/users/vacations/${userId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.accessToken);
