@@ -28,8 +28,8 @@ function logInTemplate() {
         <br>
         <button class="loginButton signingInAcc" type="submit">Submit</button>
     </fieldset>
-    <div class="col-6"><button id="signUp">Sign Up!</button></div>
-</form>`;
+</form>
+<a href="#" id="signUp"><p class="toggleReg">Sign Up!</p></a>`;
 }
 
 function signUpTemplate() {
@@ -54,8 +54,8 @@ function signUpTemplate() {
          <br>
          <button class="loginButton signingUpNewAccount" type="submit">Submit</button>
     </fieldset>
-    <div class="col-6"><button id="login">Login!</button></div>
-    </form>`;
+    </form>
+    <a href="#" id="login"><p class="toggleReg">Login!</p></a>`;
 }
 
 function signInAuth() {
