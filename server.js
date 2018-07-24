@@ -30,7 +30,7 @@ app.use(function (req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-app.use('api/users', usersRouter);
+app.use('/api/users', usersRouter);
 app.use('/api/auth', authRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
@@ -81,77 +81,8 @@ function closeServer() {
     });
 }
 
-// passport.use(new Strategy(
-//     function(username, password, cb) {
-//         db.users.findByUsername(username, function(err, user) {
-//             if (err) { return eb(err); }
-//             if (!user) { return cb(null, false); }
-//             if(user.password != password) { return cb(null, false); }
-//             return cb(null, user);
-//         })
-//     }));
-
-// passport.serializeUser(function(user, cb){
-//     cb(null, user.id);
-// });
-
-// passport.deserializeUser(function(id, cb) {
-//     db.users.findById(id, function (err, user) {
-//         if(err) { return cb(err); }
-//         cb(null, user);
-//     });
-// });
-
-
-// app.use(require('morgan')('combined'));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(require('cookie-parser')());
-// app.use(require('express-session')({ secret: 'ultra instinct', resave: false, saveUninitialized: false }));
-
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// app.get('/', function(req, res) {
-//     res.render('index.html');
-// });
-
-// app.post('/vacations', function(req, res) {
-//     res.render('pages/vacations');
-// });
-
-// app.get('/vacations', function(req, res) {
-//     res.render('pages/vacations', {user: req.params.name});
-// });
-
-// app.post('/vacations/:name', function(req, res) {
-//     res.render('pages/vacations', {user: req.params.name});
-// });
-
-// app.get('/vacations/:name', function(req, res) {
-//     res.render('pages/vacations', {user: req.params.name});
-// });
-
-// app.post('/memory', function(req, res) {
-//     res.render('pages/memory');
-// });
-
-// app.get('/memory', function(req, res) {
-//     res.render('pages/memory');
-// });
-
-// app.post('/about', function(req,res) {
-//     res.render('pages/about');
-// });
-
-// app.get('/about', function(req, res) {
-//     res.render('pages/about');
-// });
-
 if (require.main === module) {
     runServer().catch(err => console.error(err));
 }
 
 module.exports = { app, runServer, closeServer };
-// app.listen(8080);
-// console.log('8080 is the right port!')
