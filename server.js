@@ -2,11 +2,9 @@
 
 require('dotenv').config();
 var express = require('express');
-const morgan = require('morgan');
-var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 const passport = require('passport');
-const Strategy = require('passport-local').Strategy;
 
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
@@ -83,26 +81,26 @@ function closeServer() {
     });
 }
 
-passport.use(new Strategy(
-    function(username, password, cb) {
-        db.users.findByUsername(username, function(err, user) {
-            if (err) { return eb(err); }
-            if (!user) { return cb(null, false); }
-            if(user.password != password) { return cb(null, false); }
-            return cb(null, user);
-        })
-    }));
+// passport.use(new Strategy(
+//     function(username, password, cb) {
+//         db.users.findByUsername(username, function(err, user) {
+//             if (err) { return eb(err); }
+//             if (!user) { return cb(null, false); }
+//             if(user.password != password) { return cb(null, false); }
+//             return cb(null, user);
+//         })
+//     }));
 
-passport.serializeUser(function(user, cb){
-    cb(null, user.id);
-});
+// passport.serializeUser(function(user, cb){
+//     cb(null, user.id);
+// });
 
-passport.deserializeUser(function(id, cb) {
-    db.users.findById(id, function (err, user) {
-        if(err) { return cb(err); }
-        cb(null, user);
-    });
-});
+// passport.deserializeUser(function(id, cb) {
+//     db.users.findById(id, function (err, user) {
+//         if(err) { return cb(err); }
+//         cb(null, user);
+//     });
+// });
 
 
 // app.use(require('morgan')('combined'));
@@ -111,8 +109,8 @@ passport.deserializeUser(function(id, cb) {
 // app.use(require('cookie-parser')());
 // app.use(require('express-session')({ secret: 'ultra instinct', resave: false, saveUninitialized: false }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // app.get('/', function(req, res) {
 //     res.render('index.html');
