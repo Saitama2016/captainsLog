@@ -145,11 +145,11 @@ function vacSnapShot(vacObj) {
 					<h2>${city}, ${country}</h2>
 				</div>
 					<p><strong>Flight: </strong><p>
-                    <p>${vacObj.flight}</p>
+                    <p>${flight}</p>
 				</div>
 				</div>
 					<p><strong>Departure: </strong><p>
-                    <p>${vacObj.departure}</p>
+                    <p>${departure}</p>
 				</div>
 				<div class="snapMemo">
 					<h4>Recent Memory:</h4>

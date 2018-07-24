@@ -32,7 +32,7 @@ let vacationInfoJSON;
 function getVacationInputs() {
     $.ajax({
         type: 'GET',
-        url: `/api/users/vacations/single/${vacationId}`,
+        url: `/api/users/vacation/single/${vacationId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
@@ -60,7 +60,7 @@ function postMemory(){
         let memoryDes = $('.memoryDescription').val();
         $.ajax({
             type: 'POST',
-            url: `/api/users/memory/${vacationId}`,
+            url: `/api/users/memories/${vacationId}`,
             beforeSend: function(xhr) {
                 if (window.sessionStorage.accessToken) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
@@ -93,7 +93,7 @@ function clearInputs() {
 function getAllMemories() {
     $.ajax({
         type: 'GET',
-        url: `/api/users/memory/${vacationId}`,
+        url: `/api/users/memories/${vacationId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
@@ -190,7 +190,7 @@ $('.memoryList').on('click', '.deleteMemo', function() {
     let deleteItemId = $(this).closest('.fullMemo').attr('id');
     $.ajax({
         type: 'DELETE',
-        url: `/api/users/memory/${deleteItemId}`,
+        url: `/api/users/memories/${deleteItemId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
@@ -233,7 +233,7 @@ function memoryEditHTML(id, date, event, des) {
 $('.vacEdit').on('click', '#deleteVac', function() {
     $.ajax({
         type: 'DELETE',
-        url: `/api/users/vacations/${vacationId}`,
+        url: `/api/users/vacation/${vacationId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
@@ -261,7 +261,7 @@ $('.vacEdit').on('submit', function(e) {
 
     $.ajax({
         type: 'PUT',
-        url: `/api/users/vacations/${vacationId}`,
+        url: `/api/users/vacation/${vacationId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
@@ -286,7 +286,7 @@ $('.memoEdit').on('click', '.postButton', function(e) {
     let des = $(this).closest('.memoEdit').find('.memoDesEdit').val();
     $.ajax({
         type: 'PUT',
-        url: `/api/users/memory/${editItemId}`,
+        url: `/api/users/memories/${editItemId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
