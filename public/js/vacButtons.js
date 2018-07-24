@@ -144,17 +144,17 @@ function vacSnapShot(vacObj) {
 				<div class="snapMemo">
 					<h2>${city}, ${country}</h2>
 				</div>
-					<p><strong>Flight: </strong><p>
+					<p><strong>Flight: </strong></p>
                     <p>${flight}</p>
 				</div>
 				</div>
-					<p><strong>Departure: </strong><p>
+					<p><strong>Departure: </strong></p>
                     <p>${departure}</p>
 				</div>
 				<div class="snapMemo">
 					<h4>Recent Memory:</h4>
 					<div class="memory">
-						<div><i class="fas fa-star"></i><span class="memotitle">You haven't added a milestone yet</span></div>
+						<div><i class="fas fa-star"></i><span class="memotitle">You haven't added a memories yet</span></div>
 					</div>
 				</div>
 			</div
@@ -220,11 +220,13 @@ $(document).ready(() => {
 });
 
 $('.listofvacations').on('click', '.snapVac', function() {
+    debugger;
     localStorage.setItem('vacId', $(this).attr('id'));
     window.location = 'memory.html';
 });
 
 $('.vacMemoList').on('click', '.selectVac', function() {
+    debugger;
     localStorage.setItem('vacId', $(this).attr('id'));
     window.location = 'memory.html';
 });
