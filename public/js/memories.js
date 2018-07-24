@@ -42,7 +42,7 @@ function getVacationInputs() {
             if(error.responseText === 'Unauthorized') {
                 window.location === 'index.html';
             }
-            window.location = 'dashboard.html';
+            window.location = 'vacations.html';
             console.log(error);
         },
         success: function(json) {
@@ -242,7 +242,7 @@ $('.vacEdit').on('click', '#deleteVac', function() {
         error: error => console.log(error)
     });
     sessionStorage.removeItem('vacationId');
-    window.location = 'dashboard.html';
+    window.location = 'vacations.html';
 });
 
 $('.vacEdit').on('submit', function(e) {

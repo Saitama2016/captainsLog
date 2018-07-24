@@ -215,6 +215,11 @@ $(document).ready(() => {
 
 });
 
+$('.listofVacations').on('click', '.snapVac', function() {
+    localStorage.setItem('vacId', $(this).attr('id'));
+    window.location = 'memory.html';
+});
+
 function runVacations() {
     getUserInfo();
     submitVacationForm();
