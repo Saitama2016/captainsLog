@@ -132,9 +132,9 @@ router.post('/', (req, res) => {
         });
 });
 
-//Add a new Location
+//Add a new Vacation
 router.post('/vacation/:id', jwtAuth, (req, res) => {
-    const requiredFields = ['city', 'country', 'userID'];
+    const requiredFields = ['city', 'country', 'flight', 'departure', 'userID'];
     const missingField = requiredFields.find(field => !(field in req.body));
 
     if (missingField) {
@@ -160,14 +160,20 @@ router.post('/vacation/:id', jwtAuth, (req, res) => {
     let userID = req.body.userID;
     let city = req.body['city'];
     let country = req.body['country'];
+    let flight = req.body['flight'];
+    let departure = req.body['departure'];
 
     city = city.trim();
     country = country.trim();
+    flight = flight.trim();
+    departure = departure.trim();
     userID = userID.trim();
 
     return Vacation.create({
         city,
         country,
+        flight,
+        departure,
         userID
     })
     .then(vacations => {

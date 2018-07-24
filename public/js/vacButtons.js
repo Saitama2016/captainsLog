@@ -32,7 +32,7 @@ function submitVacationForm(){
         const departure = $('.departure').val();
         $.ajax({
             type: 'POST',
-            url: `/api/users/vacations/${userId}`,
+            url: `/api/users/vacation/${userId}`,
             beforeSend: function(xhr) {
                 if (window.sessionStorage.accessToken) {
                     xhr.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.accessToken);
@@ -70,7 +70,7 @@ function clearInputs() {
 function getAllVacInputs() {
     $.ajax({
         type: 'GET',
-        url: `/api/users/vacations/${userId}`,
+        url: `/api/users/vacation/${userId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.accessToken);
@@ -108,7 +108,7 @@ function getAllVacInputs() {
         for(let i=0; i < ids.length; i++) {
             $.ajax({
                 type: 'GET',
-                url: `/api/users/memory/${ids[i]}`,
+                url: `/api/users/memories/${ids[i]}`,
                 beforeSend: function(xhr) {
                     if (window.sessionStorage.accessToken) {
                         xhr.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.accessToken);
