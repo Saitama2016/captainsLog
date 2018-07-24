@@ -83,13 +83,13 @@ function getAllVacInputs() {
             console.log(error);
         },
         success: function(json) {
-            let listofVacations;
+            let listOfVacations;
             let listofMemories;
             if(json.length === 0) {
                 $('.startdash').fadeIn();
                 $('.listofVacations').html('<h3>There are no vacations listed</h3>')
             } else {
-                listofVacations = json.map(obj => {
+                listOfVacations = json.map(obj => {
                     return vacSnapShot(obj);
                 });
 
@@ -97,7 +97,7 @@ function getAllVacInputs() {
                     return memoriesHTML(obj);
                 });
                 $('.vacMemoList').html(listofMemories);
-                $('.listofVacations').html(listofVacations);
+                $('.listofVacations').html(listOfVacations);
             }
         }
     })
