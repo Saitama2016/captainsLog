@@ -84,7 +84,7 @@ function getAllVacInputs() {
         },
         success: function(json) {
             let listOfVacations;
-            let listofMemories;
+            let listOfMemories;
             if(json.length === 0) {
                 $('.startdash').fadeIn();
                 $('.listofVacations').html('<h3>There are no vacations listed</h3>')
@@ -93,10 +93,10 @@ function getAllVacInputs() {
                     return vacSnapShot(obj);
                 });
 
-                listofMemories = json.map(obj => {
+                listOfMemories = json.map(obj => {
                     return memoriesHTML(obj);
                 });
-                $('.vacMemoList').html(listofMemories);
+                $('.vacMemoList').html(listOfMemories);
                 $('.listofVacations').html(listOfVacations);
             }
         }
