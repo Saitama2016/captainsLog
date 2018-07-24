@@ -87,7 +87,7 @@ function getAllVacInputs() {
             let listofMemories;
             if(json.length === 0) {
                 $('.startdash').fadeIn();
-                $('.listofVacations').html('<h3>There are no vcations listed</h3>')
+                $('.listofVacations').html('<h3>There are no vacations listed</h3>')
             } else {
                 listofVacations = json.map(obj => {
                     return vacSnapShot(obj);
