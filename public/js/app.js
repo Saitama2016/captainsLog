@@ -4,10 +4,6 @@ function logIn() {
     $('.loginRegister').on('click', '#login', function () {
         $('.loginRegister').html(logInTemplate());
         $('.loginRegister').addClass("box-structure");
-
-        $('.signUpForm').hide();
-        $('#login').hide();
-        $('#signUp').show();
     });
 }
 
@@ -15,10 +11,7 @@ function signUp () {
     $('.loginRegister').on( 'click', '#signUp', function() {
         console.log('clicked!');
         $('.loginRegister').html(signUpTemplate());
-
-        $('.loginForm').hide();
-        $('#login').show();
-        $('#signUp').hide();
+        $('.loginRegister').addClass("box-structure");
     });
 }
 
