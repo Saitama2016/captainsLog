@@ -100,7 +100,7 @@ function signUpAuth() {
         const username = $('.usernameSignUp').val();
         const password = $('.passwordSignUp').val();
         const firstname = $('.firstnameSignUp').val();
-        const lastname = $('.lastnameSignIp').val();
+        const lastname = $('.lastnameSignUp').val();
         const email = $('.emailSignUp').val();
         $.ajax({
             type: 'POST',
