@@ -233,7 +233,7 @@ function memoryEditHTML(id, date, event, des) {
 $('.vacEdit').on('click', '#deleteVac', function() {
     $.ajax({
         type: 'DELETE',
-        url: `api/users/vacations/${vacationId}`,
+        url: `/api/users/vacations/${vacationId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
@@ -261,7 +261,7 @@ $('.vacEdit').on('submit', function(e) {
 
     $.ajax({
         type: 'PUT',
-        url: `api/users/vacations/${vacationId}`,
+        url: `/api/users/vacations/${vacationId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
@@ -286,7 +286,7 @@ $('.memoEdit').on('click', '.postButton', function(e) {
     let des = $(this).closest('.memoEdit').find('.memoDesEdit').val();
     $.ajax({
         type: 'PUT',
-        url: `api/users/memory/${editItemId}`,
+        url: `/api/users/memory/${editItemId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);

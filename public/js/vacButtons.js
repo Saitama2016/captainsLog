@@ -4,7 +4,7 @@ const userId = localStorage.getItem('userId');
 function getUserInfo() {
     $.ajax({
         type: 'GET',
-        url: `api/users/${userId}`,
+        url: `/api/users/${userId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.accessToken);
@@ -32,7 +32,7 @@ function submitVacationForm(){
         const departure = $('.departure').val();
         $.ajax({
             type: 'POST',
-            url: `api/users/vacations/${userId}`,
+            url: `/api/users/vacations/${userId}`,
             beforeSend: function(xhr) {
                 if (window.sessionStorage.accessToken) {
                     xhr.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.accessToken);
