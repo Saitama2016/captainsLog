@@ -87,7 +87,7 @@ function getAllVacInputs() {
             let listOfMemories;
             if(json.length === 0) {
                 $('.startdash').fadeIn();
-                $('.listofVacations').html('<h3>There are no vacations listed</h3>')
+                $('.listofvacations').html('<h3>There are no vacations listed</h3>');
             } else {
                 listOfVacations = json.map(obj => {
                     return vacSnapShot(obj);
@@ -97,7 +97,7 @@ function getAllVacInputs() {
                     return memoriesHTML(obj);
                 });
                 $('.vacMemoList').html(listOfMemories);
-                $('.listofVacations').html(listOfVacations);
+                $('.listofvacations').html(listOfVacations);
             }
         }
     })
@@ -125,7 +125,7 @@ function getAllVacInputs() {
                         $(`#${ids[i]} .memotitle`).text('Currently no memories posted.');
                     } else {
                         let memoTitle = json[0].title;
-                        (`.listofVacations #${ids[i]} .memotitle`).text(memoTitle);
+                        (`.listofvacations #${ids[i]} .memotitle`).text(memoTitle);
                     }
                 }
             });
@@ -144,8 +144,12 @@ function vacSnapShot(vacObj) {
 				<div class="snapMemo">
 					<h2>${city}, ${country}</h2>
 				</div>
-					<div class="currentage">${monthDiff(age)}</div>
-					<p>Months old</p>
+					<p><strong>Flight: </strong><p>
+                    <p>${vacObj.flight}</p>
+				</div>
+				</div>
+					<p><strong>Departure: </strong><p>
+                    <p>${vacObj.departure}</p>
 				</div>
 				<div class="snapMemo">
 					<h4>Recent Memory:</h4>
@@ -215,7 +219,12 @@ $(document).ready(() => {
 
 });
 
-$('.listofVacations').on('click', '.snapVac', function() {
+$('.listofvacations').on('click', '.snapVac', function() {
+    localStorage.setItem('vacId', $(this).attr('id'));
+    window.location = 'memory.html';
+});
+
+$('.vacMemoList').on('click', '.selectVac', function() {
     localStorage.setItem('vacId', $(this).attr('id'));
     window.location = 'memory.html';
 });
