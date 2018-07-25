@@ -22,7 +22,16 @@
 
 // });
 
+//Check if vacationId exists (does not equal null)
+//Look at how to get vacationId from local storage
 
+function checkVacationId (vacationId) {
+    if (vacationId !== null) {
+        getVacationInputs();
+    } else {
+        $('.startMemo').html('<p>No Memories, life is too short, go out and explore!</p>')
+    }
+}
 
 const vacationId = localStorage.getItem('vacationId');
 
@@ -30,6 +39,7 @@ let listOfMemories;
 let vacationInfoJSON;
 
 function getVacationInputs() {
+    console.log('click', vacationId);
     $.ajax({
         type: 'GET',
         url: `/api/users/vacation/single/${vacationId}`,
