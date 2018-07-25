@@ -15,7 +15,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 router.use(bodyParser.json());
 
 router.post('/', (req, res) => {
-    const requiredFields = ['username', 'password'];
+    const requiredFields = ['username', 'password', 'firstName', 'lastName', 'email'];
     const missingField = requiredFields.find(field => !(field in req.body));
 
     if (missingField) {
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
         });
     }
 
-    const stringFields = ['username', 'password', 'firstName', 'lastName'];
+    const stringFields = ['username', 'password', 'firstName', 'lastName', 'email'];
     const nonStringField = stringFields.find(
         field => field in req.body && typeof req.body[field] !== 'string'
     );
@@ -160,8 +160,8 @@ router.post('/vacation/:id', jwtAuth, (req, res) => {
     let userID = req.body.userID;
     let city = req.body['city'];
     let country = req.body['country'];
-    let flight = req.body['flight'];
-    let departure = req.body['departure'];
+    let flight = req.body.flight;
+    let departure = req.body.departure;
 
     city = city.trim();
     country = country.trim();
@@ -247,7 +247,7 @@ router.put('/vacation/:id', jwtAuth, (req, res) => {
     }
 
     const toUpdate = {};
-    const requiredFields = ['id', 'city', 'country'];
+    const requiredFields = ['id', 'city', 'country', 'flight', 'departure'];
 
     requiredFields.forEach(field => {
         if (field in req.body) {

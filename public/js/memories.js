@@ -35,7 +35,7 @@ function getVacationInputs() {
         url: `/api/users/vacation/single/${vacationId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
-                xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
+                xhr.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.accessToken);
             }
         },
         error: error => {
@@ -63,7 +63,7 @@ function postMemory(){
             url: `/api/users/memories/${vacationId}`,
             beforeSend: function(xhr) {
                 if (window.sessionStorage.accessToken) {
-                    xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
+                    xhr.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.accessToken);
                 }
             },
             data: JSON.stringify({
@@ -176,7 +176,7 @@ function memoryHTML(obj) {
         <div class='memoButton'><button class='viewDes button postbtn'>+</button></div>
         </div>
         <div class='memoHidden hidden'>
-            <div class='memoryDes'>${memoDes}</div>
+            <div class='memoryDescription'>${memoDes}</div>
             <div>
                 <button class='editMemo button nutrbtn'>edit</button>
                 <button class='deletememo button negbtn'>delete</button>
@@ -193,12 +193,21 @@ $('.memoryList').on('click', '.deleteMemo', function() {
         url: `/api/users/memories/${deleteItemId}`,
         beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
-                xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
+                xhr.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.accessToken);
             }
         },
         error: error => console.log(error)
     });
     getAllMemories();
+});
+
+$('.memoryList').on('click', '.editMemo', function() {
+    let editItemId = $(this).closest('.fullMemo').attr('id');
+    let date = $(this).closest('.fullMemo').find('.memoryDate').text();
+    let event = $(this).closest('.fullMemo').find('.memoryEvent').text();
+    let description = $(this).closest('.fullMemo').find('.memoryDescription').text();
+    $('.memoEdit').fadeIn();
+    $('.memoEdit').html(memoryEditHTML(editItemId, date, event, description));
 });
 
 function memoryEditHTML(id, date, event, des) {
@@ -220,7 +229,7 @@ function memoryEditHTML(id, date, event, des) {
         <div class="col-6">
             <label for="description">Description:</label>
             <br>
-            <textarea class="memoDescriptionEdit" rows="5" name="description" value='${des}'></textarea>
+            <textarea class="memoDesEdit" rows="5" name="description" value='${des}'></textarea>
         </div>
         <div class="col-3">
             <button class="button Posbutton" type="submit">Submit edit</button>
