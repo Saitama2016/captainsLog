@@ -220,13 +220,11 @@ $(document).ready(() => {
 });
 
 $('.listofvacations').on('click', '.snapVac', function() {
-    debugger;
     localStorage.setItem('vacId', $(this).attr('id'));
     window.location = 'memory.html';
 });
 
 $('.vacMemoList').on('click', '.selectVac', function() {
-    debugger;
     localStorage.setItem('vacId', $(this).attr('id'));
     window.location = 'memory.html';
 });
