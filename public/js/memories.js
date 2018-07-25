@@ -40,7 +40,7 @@ function getVacationInputs() {
         },
         error: error => {
             if(error.responseText === 'Unauthorized') {
-                window.location === 'index.html';
+                window.location = 'index.html';
             }
             window.location = 'vacations.html';
             console.log(error);
@@ -101,7 +101,7 @@ function getAllMemories() {
         },
         error: error => {
             if(error.responseText === 'Unauthorized') {
-                window.location === 'index.html';
+                window.location = 'index.html';
             }
             console.log(error);
         },
