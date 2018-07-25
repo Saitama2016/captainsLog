@@ -1,26 +1,26 @@
-$(document).ready(() => {
-    $('.signOutYes').click(() => {
-        console.log('click!');
-        $.ajax({
-            type: 'GET',
-            url: `index.html`,
+// $(document).ready(() => {
+//     $('.signOutYes').click(() => {
+//         console.log('click!');
+//         $.ajax({
+//             type: 'GET',
+//             url: `index.html`,
 
-        });
-    });
+//         });
+//     });
 
-    $('.closeAbout').click(() => {
-        $('.about').fadeOut();
-    });
+//     $('.closeAbout').click(() => {
+//         $('.about').fadeOut();
+//     });
 
-    $('.closeSignOut').click(() => {
-        $('.signout').fadeOut();
-    });
+//     $('.closeSignOut').click(() => {
+//         $('.signout').fadeOut();
+//     });
 
-    $('.closeVacForm').click(() => {
-        $('.vacationFileInput').fadeOut();
-    });
+//     $('.closeVacForm').click(() => {
+//         $('.vacationFileInput').fadeOut();
+//     });
 
-});
+// });
 
 
 
@@ -73,7 +73,7 @@ function postMemory(){
                 "vacationID": vacationId
             }),
             dataType: 'json',
-            contentType: 'application/json',
+            contentType: "application/json",
             error: error => console.log(error)
         });
         clearInputs();
@@ -107,7 +107,7 @@ function getAllMemories() {
         },
         success: function(json) {
             console.log(json);
-            if (json.length === 0) {
+            if (json.length < 1) {
                 $('.startMemo').fadeIn();
                 $('.memoryList').html('<h3>No Memories on file</h3>');
             } else {

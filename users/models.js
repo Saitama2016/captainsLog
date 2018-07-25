@@ -51,7 +51,7 @@ UserSchema.methods.serialize = function() {
 
 //Create a Scehma for vacationLog to outline the desired Object
 const vacationLogSchema = mongoose.Schema({
-    arrival: String,
+    flight: String,
     departure: String,
     city: String,
     country: String,
@@ -69,7 +69,7 @@ const memoriesSchema = mongoose.Schema({
 vacationLogSchema.methods.serialize = function() {
     return {
         id: this._id,
-        arrival: this.arrival || '',
+        flight: this.flight || '',
         departure: this.departure || '',
         city: this.city || '',
         country: this.country || '',
@@ -80,9 +80,9 @@ vacationLogSchema.methods.serialize = function() {
 memoriesSchema.methods.serialize = function() {
     return {
         id: this._id,
-        event: this.event,
-        date: this.date,
-        description: this.description,
+        event: this.event || '',
+        date: this.date || '',
+        description: this.description || '',
         vacationID: this.vacationID
     };
 };
