@@ -42,7 +42,7 @@ function getVacationInputs() {
             if(error.responseText === 'Unauthorized') {
                 window.location = 'index.html';
             }
-            window.location = 'vacations.html';
+            // window.location = 'vacations.html';
             console.log(error);
         },
         success: function(json) {
