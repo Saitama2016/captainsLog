@@ -29,6 +29,22 @@ const UserSchema = mongoose.Schema({
     }
 });
 
+//Create a Scehma for vacationLog to outline the desired Object
+const vacationSchema = mongoose.Schema({
+    flight: String,
+    departure: String,
+    city: String,
+    country: String,
+    userID: String
+});
+
+const memoriesSchema = mongoose.Schema({
+    event: String,
+    date: String,
+    description: String,
+    vacationID: String
+});
+
 //Use bcrypt to validate password
 UserSchema.methods.validatePassword = function(password) {
     return bcrypt.compare(password, this.password);
@@ -46,27 +62,11 @@ UserSchema.methods.serialize = function() {
         firstName: this.firstName || '',
         lastName: this.lastName || '',
         email: this.email
-    }
-}
-
-//Create a Scehma for vacationLog to outline the desired Object
-const vacationLogSchema = mongoose.Schema({
-    flight: String,
-    departure: String,
-    city: String,
-    country: String,
-    userID: String
-});
-
-const memoriesSchema = mongoose.Schema({
-    event: String,
-    date: String,
-    description: String,
-    vacationId: String
-})
+    };
+};
 
 //Use serialize method to return desired Vacation Log object
-vacationLogSchema.methods.serialize = function() {
+vacationSchema.methods.serialize = function() {
     return {
         id: this._id,
         flight: this.flight || '',
@@ -88,7 +88,7 @@ memoriesSchema.methods.serialize = function() {
 };
 
 const User =  mongoose.model('User', UserSchema);
-const Vacation = mongoose.model('VacationLog', vacationLogSchema);
+const Vacation = mongoose.model('Vacation', vacationSchema);
 const Memory = mongoose.model('Memory', memoriesSchema);
 
 module.exports = {User, Vacation, Memory};

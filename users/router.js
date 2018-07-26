@@ -300,7 +300,7 @@ router.get('/', (req, res) => {
 router.get('/vacation', (req, res) => {
     return Vacation.find()
         .then(vacations => res.json(vacations.map(vacation => vacation.serialize())))
-        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}))
+        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}));
 });
 
 router.get('/vacation/:id', jwtAuth, (req, res) => {
@@ -310,21 +310,21 @@ router.get('/vacation/:id', jwtAuth, (req, res) => {
             userID: user
         })
         .then(vacations => res.json(vacations.map(vacation => vacation.serialize())))
-        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}))
+        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}));
 });
 
 router.get('/vacation/single/:id', jwtAuth, (req, res) => {
     const id = req.params.id; 
     Vacation
-        .findById(req.params.id)
-        .then(vacation => res.json(vacation.map(vacation => vacation.serialize())))
-        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}))
+        .findById(id)
+        .then(vacation => res.json(vacation.serialize()))
+        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}));
 });
 
 router.get('/memories', (req, res) => {
     return Memory.find()
         .then(memories => res.json(memories.map(memory => memory.serialize())))
-        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}))
+        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}));
 });
 
 router.get('/memories/:id', jwtAuth, (req, res) => {
@@ -334,7 +334,7 @@ router.get('/memories/:id', jwtAuth, (req, res) => {
             vacationID: vacation
         })
         .then(memories => res.json(memories.map(memory => memory.serialize())))
-        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}))
+        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}));
 });
 
 router.get('/:id', (req, res) => {

@@ -24,7 +24,7 @@ function logInTemplate() {
         <input class="usernameLogIn" type="text" name="username" required>
         <br>
         <label for="password">Password:</label>
-        <input class="passwordLogIn" type="text" name="password" required>
+        <input class="passwordLogIn" type="password" name="password" required>
         <br>
         <button class="loginButton signingInAcc" type="submit">Submit</button>
     </fieldset>
@@ -41,7 +41,7 @@ function signUpTemplate() {
          <input class="usernameSignUp" type="text" name="username" pattern=".{1,}" required title="1 characters minimum" required>
          <br>
          <label for="password">Password:</label>
-         <input class="passwordSignUp" type="text" name="password" pattern=".{10, 72}" required title="10 characters minimum" required>
+         <input class="passwordSignUp" type="password" name="password" pattern=".{10, 72}" required title="10 characters minimum" required>
          <br>
          <label for="firstName">First Name:</label>
          <input class="firstnameSignUp" type="text" name="firstName" required>

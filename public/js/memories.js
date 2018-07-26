@@ -1,39 +1,16 @@
-// $(document).ready(() => {
-//     $('.signOutYes').click(() => {
-//         console.log('click!');
-//         $.ajax({
-//             type: 'GET',
-//             url: `index.html`,
-
-//         });
-//     });
-
-//     $('.closeAbout').click(() => {
-//         $('.about').fadeOut();
-//     });
-
-//     $('.closeSignOut').click(() => {
-//         $('.signout').fadeOut();
-//     });
-
-//     $('.closeVacForm').click(() => {
-//         $('.vacationFileInput').fadeOut();
-//     });
-
-// });
 
 //Check if vacationId exists (does not equal null)
 //Look at how to get vacationId from local storage
 
-function checkVacationId (vacationId) {
-    if (vacationId !== null) {
-        getVacationInputs();
-    } else {
-        $('.startMemo').html('<p>No Memories, life is too short, go out and explore!</p>')
-    }
-}
+// function checkVacationId (vacationId) {
+//     if (vacationId !== null) {
+//         getVacationInputs();
+//     } else {
+//         $('.startMemo').html('<p>No Memories, life is too short, go out and explore!</p>')
+//     }
+// }
 
-const vacationId = localStorage.getItem('vacationId');
+const vacationId = localStorage.getItem('vacId');
 
 let listOfMemories;
 let vacationInfoJSON;
@@ -57,17 +34,18 @@ function getVacationInputs() {
         },
         success: function(json) {
             $('.city').text(json.city);
+            console.log(json.city);
             vacationInfoJSON = json;
         }
     });
 }
 
 function postMemory(){
-    $('.memoryInput').on('submit', function(event) {
+    $('.memoInput').on('submit', function(event) {
         event.preventDefault();
-        let memoryDate = $('.memoryDate').val();
-        let memoryEvent = $('.memoryEvent').val();
-        let memoryDes = $('.memoryDescription').val();
+        let memoryDate = $('.memoDate').val();
+        let memoryEvent = $('.memoEvent').val();
+        let memoryDes = $('.memoDescription').val();
         $.ajax({
             type: 'POST',
             url: `/api/users/memories/${vacationId}`,
@@ -95,9 +73,9 @@ function postMemory(){
 
 
 function clearInputs() {
-    $('.memoryDate').val('');
-    $('.memoryEvent').val('');
-    $('.memoryDescription').val('');
+    $('.memoDate').val('');
+    $('.memoEvent').val('');
+    $('.memoDescription').val('');
 }
 
 function getAllMemories() {
@@ -325,27 +303,54 @@ $('.memoEdit').on('click', '.postButton', function(e) {
     getAllMemories();
 });
 
-$('.vacViewEdit').on('click', function() {
-    $('.vacEdit').html(vacationHTML(vacationInfoJSON));
-    $('.vacEdit').fadeIn();
-})
+$(document).ready(() => {
+    $('.signOutYes').click(() => {
+        console.log('click!');
+    });
 
-$('.vacEdit').on('click', '#editVacation', function(event) {
-    event.preventDefault();
-    $('.disabledInput').prop('disabled', false);
-});
+    $('.closeAbout').click(() => {
+        $('.about').fadeOut();
+    });
 
-$('.memoryList').on('click', '.viewDes', function() {
-    $(this).closest('.fullMemo').find('.memoHidden').toggleClass('hidden');
-    ($(this).text() == '+')? $(this).text('-'): $(this).text('+');
-});
+    $('.signOutOpt').click(() => {
+        console.log('click');
+        $('.signout').fadeIn();
+    });
 
-$('.addMemoButton').on('click', function() {
-    $('.memoAdd').fadeIn();
-});
+    $('.aboutOpt').click(() => {
+        console.log('click');
+        $('.about').fadeIn();
+    });
 
-$('.modal').on('click', '.closeButton', function() {
-    $(this).closest('.modal').fadeOut();
+    $('.closeSignOut').click(() => {
+        $('.signout').fadeOut();
+    });
+
+    $('.signOutNo').click(() => {
+        $('.signout').fadeOut();
+    });
+
+    $('.addMemories').click(() => {
+        $('.memoriesAdd').fadeIn();
+    });
+    
+    $('.memoryList').on('click', '.viewDes', function() {
+        $(this).closest('.fullMemo').find('.memoHidden').toggleClass('hidden');
+        ($(this).text() == '+')? $(this).text('-'): $(this).text('+');
+    });
+    
+    $('.addMemoButton').on('click', function() {
+        $('.memoAdd').fadeIn();
+    });
+    
+    $('.modal').on('click', '.closeButton', function() {
+        $(this).closest('.modal').fadeOut();
+    });
+
+    $('.closeMemoForm').click(() => {
+        $('.memoriesAdd').fadeOut();
+    });
+
 });
 
 function outEmptyModal(element) {
