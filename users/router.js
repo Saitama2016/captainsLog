@@ -220,7 +220,7 @@ router.post('/memories/:id', jwtAuth, (req, res) => {
     date =  date.trim();
     vacationID = vacationID.trim();
 
-    return Memories.create({
+    return Memory.create({
         event,
         description,
         date,
