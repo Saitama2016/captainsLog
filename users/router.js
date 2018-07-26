@@ -215,7 +215,7 @@ router.post('/memories/:id', jwtAuth, (req, res) => {
 
     let {event = '', description = '', date = '', vacationID = ''} = req.body;
 
-    title = title.trim();
+    event = event.trim();
     description = description.trim();
     date =  date.trim();
     vacationID = vacationID.trim();
