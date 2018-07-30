@@ -1,4 +1,18 @@
+html {
+    background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/wczfl6k/looking-out-airplane-window-in-flight_niiccbfye__F0000.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    text-align: center;
+}
+
 header {
+    background-color: #f2efe8;
     width: 100%;
     position: absolute;
     top: 0;
@@ -16,6 +30,9 @@ body, button {
 
 #signUp, #login {
     position: absolute;
+    width: 100px;
+    height: 50px;
+    border-radius: 10%;
 }
 
 #signUp {
@@ -24,6 +41,20 @@ body, button {
 
 #login {
     left: 0;
+}
+
+.loginForm, .signUpForm {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+legend {
+    text-align: center;
+}
+
+.visualTutorial {
+    padding-top: 50px;
 }
 
 #Logo {
@@ -70,7 +101,12 @@ main {
 
 .spotlight {
     border: 1px solid black;
-    border-radius: 50%;
+    border-radius: 20%;
+    background-color: #c2d4d8;
+}
+
+.eventList {
+    background-color: white;
 }
 
 .step {

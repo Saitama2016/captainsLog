@@ -125,7 +125,7 @@ function getAllVacInputs() {
                         $(`#${ids[i]} .memotitle`).text('Currently no memories posted.');
                     } else {
                         let memoTitle = json[0].title;
-                        (`.listofvacations #${ids[i]} .memotitle`).text(memoTitle);
+                        $(`.listofvacations #${ids[i]} .memotitle`).text(memoTitle);
                     }
                 }
             });
