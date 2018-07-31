@@ -8,11 +8,19 @@ html {
 
 body {
     margin: 0;
-    text-align: center;
+}
+
+.vacationPage {
+    background-color: #caebf2;
+}
+
+.memoPage {
+    background-color: #ff3b3f;
+    height: 100%;
 }
 
 header {
-    background-color: #f2efe8;
+    background-color: #efefef;
     width: 100%;
     position: absolute;
     top: 0;
@@ -28,11 +36,14 @@ body, button {
     font-family: 'Rubik', sans-serif;
 }
 
+button {
+    border-radius: 10%;
+}
+
 #signUp, #login {
     position: absolute;
     width: 100px;
     height: 50px;
-    border-radius: 10%;
 }
 
 #signUp {
@@ -131,6 +142,17 @@ li {
     display: none;
 }
 
-/* .vacationPage, .memoryList {
+.memoryList {
+    margin-top: 12px;
+}
+
+.hidden {
     display: none;
-} */
+}
+
+@media only screen and (max-width: 500px) {
+    .addMemories {
+        font-size: 10px;
+        margin-top: 12px;
+    }
+}

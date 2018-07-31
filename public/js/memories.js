@@ -167,7 +167,7 @@ function memoryHTML(obj) {
             <div class='memoryDescription'>${memoDes}</div>
             <div>
                 <button class='editMemo button nutrbtn'>edit</button>
-                <button class='deletememo button negbtn'>delete</button>
+                <button class='deleteMemo button negbtn'>delete</button>
             </div>
         </div>
     </div>
@@ -190,6 +190,7 @@ $('.memoryList').on('click', '.deleteMemo', function() {
 });
 
 $('.memoryList').on('click', '.editMemo', function() {
+    console.log('clicked!');
     let editItemId = $(this).closest('.fullMemo').attr('id');
     let date = $(this).closest('.fullMemo').find('.memoryDate').text();
     let event = $(this).closest('.fullMemo').find('.memoryEvent').text();
@@ -198,7 +199,7 @@ $('.memoryList').on('click', '.editMemo', function() {
     $('.memoEdit').html(memoryEditHTML(editItemId, date, event, description));
 });
 
-function memoryEditHTML(id, date, event, des) {
+function memoryEditHTML(id, date, event, description) {
     return `
     <form role="form" id=${id}" class="memoInput modal-content">
     <div class="closeButton"><i class="fas fa-times fa-3x"></i></div>
@@ -217,7 +218,7 @@ function memoryEditHTML(id, date, event, des) {
         <div class="col-6">
             <label for="description">Description:</label>
             <br>
-            <textarea class="memoDesEdit" rows="5" name="description" value='${des}'></textarea>
+            <textarea class="memoDesEdit" rows="5" name="description" value='${description}'></textarea>
         </div>
         <div class="col-3">
             <button class="button Posbutton" type="submit">Submit edit</button>
