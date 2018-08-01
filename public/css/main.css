@@ -13,21 +13,27 @@ body {
     height: 140vh;
 }
 
+/* Allow Vacation and Memories Pages to have different backgrounds */
 .vacationPage {
     background-color: #4484ce;
 }
 
 .memoPage {
-    background-color: #f9cf00;
+    background-color: #66fcf1;
 }
 
 header {
-    background-color: #d9d9d9;
+    background-color: #8fc1e3;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
     border-bottom: 1px solid black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }
 
 h2 {
@@ -38,22 +44,42 @@ body, button {
     font-family: 'Rubik', sans-serif;
 }
 
-button {
+button, a#login, a#signUp {
     border-radius: 10%;
+    background-color: skyblue;
+    font-weight: 600;
+    box-shadow: 1px 2px 2px mediumslateblue;
 }
 
-#signUp, #login {
+button#signUp {
     position: absolute;
+    display: block;
+    right: 20px;
+} 
+
+button#signUp, button#login {
     width: 100px;
     height: 50px;
 }
 
-#signUp {
-    right: 0;
+a#signUp, a#login {
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    text-align: center;
+    width: 100px;
+    height: 30px;
 }
 
-#login {
-    left: 0;
+.toggleReg {
+    color: black;
+    padding-top: 5px;
+}
+
+section.loginRegister.row {
+    padding-bottom: 30px;
 }
 
 .loginForm, .signUpForm {
@@ -72,7 +98,12 @@ legend {
 }
 
 .visualTutorial {
-    padding-top: 50px;
+    background-color: rgba(250, 250, 250, 0.4);
+}
+
+section.loginRegister.row.box-structure {
+    padding: 0;
+    padding-bottom: 20px;
 }
 
 #Logo {
@@ -103,10 +134,6 @@ main {
     margin-top: 50px;
 }
 
-/* .arrival, .departure, .trip, #edit, #delete {
-    font-family: 'Rubik', sans-serif;
-} */
-
 .arrival, .departure {
     font-weight: 600;
 }
@@ -128,7 +155,27 @@ main {
     background-color: #c2d4d8;
 }
 
+nav {
+    padding-bottom: 4px;
+}
+
+.signOutOpt, .aboutOpt {
+    background-color: #1f2833;
+    color: white;
+    font-weight: 400;
+    margin-right: 5px;
+}
+
+.addVacation {
+    background-color: #a8d0e6;
+}
+
+.postbtn {
+    margin-top: 10px;
+}
+
 .eventList {
+    margin-top: 10px;
     background-color: white;
 }
 
@@ -154,6 +201,14 @@ li {
     display: none;
 }
 
+.vacationFormInput, .memoriesAdd {
+    display: none;
+}
+
+.toVacPage, .addMemories, .viewDes {
+    background-color: #6abcf3;
+}
+
 .memoryList {
     margin-top: 12px;
 }
@@ -166,5 +221,9 @@ li {
     .addMemories {
         font-size: 10px;
         margin-top: 12px;
+    }
+
+    .loginForm, .signUpForm {
+        width: 70%;
     }
 }
