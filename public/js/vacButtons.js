@@ -154,7 +154,7 @@ function vacSnapShot(vacObj) {
 				<div class="snapMemo">
 					<h4>Recent Memory:</h4>
 					<div class="memory">
-						<div><i class="fas fa-star"></i><span class="memotitle">You haven't added a memories yet</span></div>
+						<div><i class="fas fa-home"></i><span class="memotitle">You haven't added a memories yet</span></div>
 					</div>
 				</div>
 			</div
@@ -166,9 +166,9 @@ function memoriesHTML(vacObj) {
     let city = vacObj.city;
     let country = vacObj.country;
     return `
-        <div id="${vacId}" class="selectVac">
+        <div id="${vacId}" class="selectVac" tabindex="0">
             <div id="">
-                <p><i class="fas fa-star"></i><span>${city}, ${country}</span></p>
+                <p><i class="fas fa-home"></i> <span>${city}, ${country}</span></p>
             </div>
         </div>
     `;

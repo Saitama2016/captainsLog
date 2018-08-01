@@ -34,6 +34,7 @@ function getVacationInputs() {
         },
         success: function(json) {
             $('.city').text(json.city);
+            $('.country').text(json.country);
             console.log(json.city);
             vacationInfoJSON = json;
         }
@@ -166,8 +167,8 @@ function memoryHTML(obj) {
         <div class='memoHidden hidden'>
             <div class='memoryDescription'>${memoDes}</div>
             <div>
-                <button class='editMemo button nutrbtn'>edit</button>
-                <button class='deleteMemo button negbtn'>delete</button>
+                <button class='editMemo button nutrbtn'><i class="fas fa-edit"></i></button>
+                <button class='deleteMemo button negbtn'><i class="fas fa-trash-alt"></i></button>
             </div>
         </div>
     </div>

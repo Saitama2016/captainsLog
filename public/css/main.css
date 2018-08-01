@@ -55,7 +55,11 @@ button#signUp {
     position: absolute;
     display: block;
     right: 20px;
-} 
+}
+
+button:focus, .selectVac:focus {
+    border: 2px solid red;
+}
 
 button#signUp, button#login {
     width: 100px;
@@ -76,6 +80,27 @@ a#signUp, a#login {
 .toggleReg {
     color: black;
     padding-top: 5px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid black;
+    width: 80%;
 }
 
 section.loginRegister.row {
@@ -177,6 +202,20 @@ nav {
 .eventList {
     margin-top: 10px;
     background-color: white;
+    padding-bottom: 15px;
+    width: 50%;
+}
+
+.selectVac {
+    margin-top: 15px;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 10%;
+    box-shadow: 1px 2px 2px darkslategrey;
+}
+
+.selectVac:hover, button:hover, .snapMemo {
+    cursor: pointer;
 }
 
 .step {
