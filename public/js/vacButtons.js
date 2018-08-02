@@ -322,6 +322,10 @@ $(document).ready(() => {
         $('.about').fadeOut();
     });
 
+    $('.closeStartdash').click(() => {
+        $('.startdash').fadeOut();
+    });
+
     $('.signOutOpt').click(() => {
         console.log('click');
         $('.signout').fadeIn();
