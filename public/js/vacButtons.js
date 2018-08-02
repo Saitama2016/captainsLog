@@ -24,7 +24,7 @@ function getUserInfo() {
 }
 
 function submitVacationForm(){
-    $('.vacationFileInput').on('submit', function(event) {
+    $('.vacationFileInput').on('click', '.postbtn', function(event) {
         event.preventDefault();
         const city = $('.city').val();
         const country = $('.country').val();
