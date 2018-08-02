@@ -191,6 +191,10 @@ nav {
     margin-right: 5px;
 }
 
+.signOutYes {
+    margin-top: 10px;
+}
+
 .addVacation {
     background-color: #a8d0e6;
 }
@@ -216,6 +220,13 @@ nav {
 
 .selectVac:hover, button:hover, .snapMemo {
     cursor: pointer;
+}
+
+
+.vacLoca {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1em;
 }
 
 .step {

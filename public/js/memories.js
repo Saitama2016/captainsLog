@@ -60,8 +60,6 @@ function postMemory(){
     });
 }
 
-
-
 function clearInputs() {
     $('.memoDate').val('');
     $('.memoEvent').val('');
@@ -164,20 +162,22 @@ function memoryHTML(obj) {
     `;
 }
 
-$('.memoryList').on('click', '.deleteMemo', function() {
-    let deleteItemId = $(this).closest('.fullMemo').attr('id');
-    $.ajax({
-        type: 'DELETE',
-        url: `/api/users/memories/${deleteItemId}`,
-        beforeSend: function(xhr) {
+function handleMemoryDelete () {
+    $('.memoryList').on('click', '.deleteMemo', function() {
+        let deleteItemId = $(this).closest('.fullMemo').attr('id');
+        $.ajax({
+            type: 'DELETE',
+            url: `/api/users/memories/${deleteItemId}`,
+            beforeSend: function(xhr) {
             if (window.sessionStorage.accessToken) {
                 xhr.setRequestHeader("Authorization", "Bearer " + window.sessionStorage.accessToken);
             }
-        },
-        error: error => console.log(error)
+            },
+            error: error => console.log(error)
+        });
+        getAllMemories();
     });
-    getAllMemories();
-});
+}
 
 $('.memoryList').on('click', '.editMemo', function() {
     console.log('clicked!');
@@ -196,7 +196,7 @@ $('.memoryList').on('click', '.editMemo', function() {
 function memoryEditHTML(id, date, event, description) {
     return `
     <form role="form" id="${id}" class="memoInput modal-content">
-    <button class="closeButton closeVacForm"><i class="fas fa-times fa-3x"></i></button>
+    <button class="closeButton closeMemoForm"><i class="fas fa-times fa-3x"></i></button>
         <fieldset class="row">
             <div class="col-3">
                 <label for="date">Date:</label>
@@ -221,53 +221,20 @@ function memoryEditHTML(id, date, event, description) {
     `
 }
 
-$('.vacEdit').on('click', '#deleteVac', function() {
-    $.ajax({
-        type: 'DELETE',
-        url: `/api/users/vacation/${vacationId}`,
-        beforeSend: function(xhr) {
-            if (window.sessionStorage.accessToken) {
-                xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
-            }
-        },
-        error: error => console.log(error)
-    });
-    sessionStorage.removeItem('vacationId');
-    window.location = 'vacations.html';
-});
-
-$('.vacEdit').on('submit', function(e) {
-    e.preventDefault();
-    const vacCity = $(this).closest('.vacEdit').find('.city').val();
-    const vacCountry = $(this).closest('.vacEdit').find('.country').val();
-    const vacFlight = $(this).closest('.vacEdit').find('.flight').val();
-    const vacDeparture = $(this).closest('.vacEdit').find('.departure').val();
-    const dataPut = JSON.stringify({
-        'id': vacationId,
-        'city': vacCity,
-        'country': vacCountry,
-        'flight': vacFlight,
-        'departure': vacDeparture
-    });
-
-    $.ajax({
-        type: 'PUT',
-        url: `/api/users/vacation/${vacationId}`,
-        beforeSend: function(xhr) {
-            if (window.sessionStorage.accessToken) {
-                xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
-            }
-        },
-        data: dataPut,
-        dataType: 'json',
-        contentType: 'application/json',
-        error: error => console.log(error)
-    })
-    .done(function(){
-        getVacationInputs();
-    });
-    outEmptyModal($(this));
-});
+    // $('.vacEdit').on('click', '#deleteVac', function() {
+    //     $.ajax({
+    //         type: 'DELETE',
+    //         url: `/api/users/vacation/${vacationId}`,
+    //         beforeSend: function(xhr) {
+    //         if (window.sessionStorage.accessToken) {
+    //             xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
+    //         }
+    //         },
+    //         error: error => console.log(error)
+    //         });
+    //     sessionStorage.removeItem('vacationId');
+    //     window.location = 'vacations.html';
+    // });
 
 function handleMemoEditSubmit() {
     $('.memoEdit').on('submit', 'form.memoInput', function(e) {
@@ -362,6 +329,7 @@ function runMemoryPage() {
     getAllMemories();
     handleMemoryPageButtons();
     handleMemoEditSubmit();
+    handleMemoryDelete();
 }
 
 $(runMemoryPage()); 

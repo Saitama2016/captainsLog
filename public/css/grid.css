@@ -39,6 +39,12 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .row {
+        max-width: 400px;
+        padding: 1px;
+        margin: 0 auto;
+    }
+
     .col-6 {
         width: 100%;
     }
