@@ -45,7 +45,7 @@ body, button {
 }
 
 button, a#login, a#signUp {
-    border-radius: 10%;
+    border-radius: 1rem;
     background-color: skyblue;
     font-weight: 600;
     box-shadow: 1px 2px 2px mediumslateblue;
@@ -124,6 +124,8 @@ legend {
 
 .visualTutorial {
     background-color: rgba(250, 250, 250, 0.4);
+    padding-bottom: 2rem;
+    border-radius: 1rem;
 }
 
 section.loginRegister.row.box-structure {
@@ -176,7 +178,7 @@ main {
 .spotlight {
     height: 120px;
     border: 1px solid black;
-    border-radius: 20%;
+    border-radius: 1rem;
     background-color: #c2d4d8;
 }
 
@@ -214,7 +216,7 @@ nav {
     margin-top: 15px;
     text-align: center;
     border: 1px solid;
-    border-radius: 10%;
+    border-radius: 1rem;
     box-shadow: 1px 2px 2px darkslategrey;
 }
 
