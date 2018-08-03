@@ -1,4 +1,3 @@
-
 const userId = localStorage.getItem('userId');
 
 function getUserInfo() {
@@ -166,39 +165,6 @@ function vacSnapShot(vacObj) {
     <br>
     `
 }
-
-// $('.vacEdit').on('submit', function(e) {
-//     e.preventDefault();
-//     const vacCity = $(this).closest('.vacEdit').find('.city').val();
-//     const vacCountry = $(this).closest('.vacEdit').find('.country').val();
-//     const vacFlight = $(this).closest('.vacEdit').find('.flight').val();
-//     const vacDeparture = $(this).closest('.vacEdit').find('.departure').val();
-//     const dataPut = JSON.stringify({
-//         'id': vacationId,
-//         'city': vacCity,
-//         'country': vacCountry,
-//         'flight': vacFlight,
-//         'departure': vacDeparture
-//     });
-
-//     $.ajax({
-//         type: 'PUT',
-//         url: `/api/users/vacation/${vacationId}`,
-//         beforeSend: function(xhr) {
-//             if (window.sessionStorage.accessToken) {
-//                 xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
-//             }
-//         },
-//         data: dataPut,
-//         dataType: 'json',
-//         contentType: 'application/json',
-//         error: error => console.log(error)
-//     })
-//     .done(function(){
-//         getVacationInputs();
-//     });
-//     outEmptyModal($(this));
-// });
 
 function handleVacDelete () {
     $('body').on('click', '.deleteVac', function() {
