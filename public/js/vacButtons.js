@@ -151,6 +151,11 @@ function vacSnapShot(vacObj) {
         <p class="vacFlight">${flight}</p>
 		<p><strong>Departure: </strong></p>
         <p class="vacDepart">${departure}</p>
+        <br>
+        <div class="snapButtons">
+        <button class='editVac button nutrbtn'><i class="fas fa-edit"></i></button>
+        <button class='deleteVac button negbtn'><i class="fas fa-trash-alt"></i></button>
+        </div>
 	</div>
 	<div class="snapMemo">
 		<h4>Recent Memory:</h4>
@@ -159,10 +164,6 @@ function vacSnapShot(vacObj) {
 	    </div>
 	</div>
     <br>
-    <div class="snapButtons">
-        <button class='editVac button nutrbtn'><i class="fas fa-edit"></i></button>
-        <button class='deleteVac button negbtn'><i class="fas fa-trash-alt"></i></button>
-    </div>
     `
 }
 
@@ -216,11 +217,11 @@ function handleVacDelete () {
     });
 }
 
-$('.listofvacations').on('click', '.editVac', function() {
+$('body').on('click', '.editVac', function() {
     console.log('clicked!');
-    let editItemId = $(this).closest('.snapVac').attr('id');
-    let city = $(this).closest('.snapVac').find('.vacCity').text();
-    let country = $(this).closest('.snapVac').find('.vacCountry').text();
+    let editItemId = $(this).closest('.listofvacations').attr('id');
+    let city = $(this).closest('.listofvacations').find('.vacCity').text();
+    let country = $(this).closest('.listofv').find('.vacCountry').text();
     let flight = $(this).closest('.snapVac').find('.vacFlight').text();
     let departure = $(this).closest('.snapVac').find('.vacDepart').text();
     console.log(editItemId);
@@ -362,10 +363,10 @@ $(document).ready(() => {
 
 });
 
-$('.listofvacations').on('click', '.snapVac', function() {
-    localStorage.setItem('vacId', $(this).attr('id'));
-    window.location = 'memory.html';
-});
+// $('.listofvacations').on('click', '.snapVac', function() {
+//     localStorage.setItem('vacId', $(this).attr('id'));
+//     window.location = 'memory.html';
+// });
 
 $('.vacMemoList').on('click', '.selectVac', function() {
     localStorage.setItem('vacId', $(this).attr('id'));
