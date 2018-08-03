@@ -36,7 +36,7 @@ function signUpTemplate() {
     return `<form class="signUpForm" autocomplete="on">
     <fieldset>
          <div class="loginError"></div>
-         <legend class="loginRegisterTitle"></legend>
+         <legend class="loginRegisterTitle">Welcome, aboard!</legend>
          <label for="username">Username:</label>
          <input class="usernameSignUp" type="text" name="username" pattern=".{1,}" required title="1 characters minimum" required>
          <br>
