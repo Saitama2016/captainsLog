@@ -201,8 +201,9 @@ function vacSnapShot(vacObj) {
 // });
 
 function handleVacDelete () {
-    $('.listofvacations').on('click', '.deleteVac', function() {
+    $('body').on('click', '.deleteVac', function() {
         let deleteItemId = $(this).closest('.snapVac').attr('id');
+        console.log(deleteItemId);
         $.ajax({
             type: 'DELETE',
             url: `/api/users/vacation/${deleteItemId}`,
@@ -217,25 +218,27 @@ function handleVacDelete () {
     });
 }
 
-$('body').on('click', '.editVac', function() {
-    console.log('clicked!');
-    let editItemId = $(this).closest('.listofvacations').attr('id');
-    let city = $(this).closest('.listofvacations').find('.vacCity').text();
-    let country = $(this).closest('.listofv').find('.vacCountry').text();
-    let flight = $(this).closest('.snapVac').find('.vacFlight').text();
-    let departure = $(this).closest('.snapVac').find('.vacDepart').text();
-    console.log(editItemId);
-    console.log(city);
-    console.log(country);
-    console.log(flight);
-    console.log(departure);
-    $('.vacEdit').fadeIn();
-    $('.vacEdit').html(vacationEditHTML(editItemId, city, country, flight, departure));
-});
+function handleStartVacEdit () {
+    $('body').on('click', '.editVac', function() {
+        console.log('clicked!');
+        let editItemId = $(this).closest('.snapVac').attr('id');
+        let city = $(this).closest('.snapVac').find('.vacCity').text();
+        let country = $(this).closest('.snapVac').find('.vacCountry').text();
+        let flight = $(this).closest('.snapVac').find('.vacFlight').text();
+        let departure = $(this).closest('.snapVac').find('.vacDepart').text();
+        console.log(editItemId);
+        console.log(city);
+        console.log(country);
+        console.log(flight);
+        console.log(departure);
+        $('.vacEdit').fadeIn();
+        $('.vacEdit').html(vacationEditHTML(editItemId, city, country, flight, departure));
+    });
+}
 
 function vacationEditHTML(id, city, country, flight, departure) {
     return ` 
-    <form role="form" id='${id}' class="vacaEditFileInput modal-content">
+    <form role="form" id='${id}' class="vacEditFileInput modal-content">
     <button class="closeButton closeVacForm"><i class="fas fa-times fa-3x"></i></button>
         <fieldset class="row vacEditField">
             <h3>Vacation</h3>
@@ -271,16 +274,19 @@ function vacationEditHTML(id, city, country, flight, departure) {
 }
 
 function handleVacEditSubmit() {
-    $('.vacEdit').on('submit', 'form.vacaEditFileInput', function(e) {
+    $('.vacEdit').on('submit', 'form.vacEditFileInput', function(e) {
         e.preventDefault();
         console.log('What prevent?');
         let editItemId = $(this).closest('.vacEdit').find('form').attr('id');
-        let date = $(this).closest('.vacEdit').find('.memoDateEdit').val();
-        let event = $(this).closest('.vacEdit').find('.memoEventEdit').val();
-        let des = $(this).closest('.vacEdit').find('.memoDesEdit').val();
+        let city = $(this).closest('.vacEdit').find('.cityEdit').val();
+        let country = $(this).closest('.vacEdit').find('.countryEdit').val();
+        let flight = $(this).closest('.vacEdit').find('.flightEdit').val();
+        let departure = $(this).closest('.vacEdit').find('.departureEdit').val();
+        console.log(editItemId);
+        console.log(city);
         $.ajax({
             type: 'PUT',
-            url: `/api/users/memories/${editItemId}`,
+            url: `/api/users/vacation/${editItemId}`,
             beforeSend: function(xhr) {
                 if (window.sessionStorage.accessToken) {
                     xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
@@ -288,16 +294,17 @@ function handleVacEditSubmit() {
             },
             data: JSON.stringify({
                 'id': editItemId,
-                'event': event,
-                'date': date,
-                'description': des
+                'city': city,
+                'country': country,
+                'flight': flight,
+                'departure': departure
             }),
             dataType: 'json',
             contentType: 'application/json',
             error: error => console.log(error)
         });
         outEmptyModal($(this));
-        getAllMemories();
+        getAllVacInputs();
     });
 }
 
@@ -355,6 +362,7 @@ $(document).ready(() => {
 
     $('.closeVacForm').click(() => {
         $('.vacationFormInput').fadeOut();
+        $('.vacEditFileInput').fadeOut();
     });
 
     $('.closeMemoForm').click(() => {
@@ -362,6 +370,11 @@ $(document).ready(() => {
     });
 
 });
+
+function outEmptyModal(element) {
+    element.closest('.modal').fadeOut();
+    element.closest('.modal').empty();
+}
 
 // $('.listofvacations').on('click', '.snapVac', function() {
 //     localStorage.setItem('vacId', $(this).attr('id'));
@@ -377,6 +390,8 @@ function runVacations() {
     getUserInfo();
     submitVacationForm();
     getAllVacInputs();
+    handleStartVacEdit();
+    handleVacEditSubmit();
     handleVacDelete();
 }
 
