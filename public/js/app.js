@@ -130,12 +130,22 @@ function signUpAuth() {
     });
 }
 
+//Function runs demo
+function runDemo() {
+    const demoUsername = 'Vinnyg2017';
+    const demoPassword = 'Pegasus2016';
+    $('#liveDemo').on('click', function() {
+        postAuthLogin(demoUsername, demoPassword);
+    });
+}
+
 //Create a function to call Signup and Login functions 
 function indexPage() {
     logIn();
     signUp();
     signInAuth();
     signUpAuth();
+    runDemo();
 }
 
 //Use jQuery to call indexPage function

@@ -7,7 +7,6 @@ body {
 .landingPage {
     /*Image of Looking out airplane window in flight was made by swatchandsoda on VideoBlocks*/
     background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/wczfl6k/looking-out-airplane-window-in-flight_niiccbfye__F0000.png);
-    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     /* Use vh to make image fit the entire screen */
@@ -49,6 +48,11 @@ body, button {
     font-size: 1.7rem;
 }
 
+.tutorialHook {
+    text-align: center;
+    font-weight: 600;
+}
+
 button, a#login, a#signUp {
     border-radius: 1rem;
     background-color: skyblue;
@@ -67,11 +71,15 @@ button#login {
     left: 20px;
 }
 
+button#liveDemo {
+    margin-bottom: 10px;
+}
+
 button:focus, .selectVac:focus {
     border: 2px solid red;
 }
 
-button#signUp, button#login {
+button#signUp, button#login, button#liveDemo {
     width: 200px;
     height: 70px;
     font-size: 1.6rem;
@@ -153,7 +161,7 @@ section.row.visualTutorial {
     padding-bottom: 2rem;
     border-radius: 1rem;
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 50px;
     width: 85%;
 }
 
@@ -352,7 +360,7 @@ li {
         margin-top: 0;
     }
 
-    button#signUp, button#login {
+    button#signUp, button#login, button#liveDemo {
         width: 100px;
         height: 50px;
         font-size: 1rem;
@@ -444,7 +452,7 @@ li {
     }
 
     section.row.visualTutorial{
-        margin-top: 55px;
+        margin-top: 65px;
     }
 
     .signOutOpt, .aboutOpt {
@@ -480,13 +488,12 @@ li {
 }
 
 @media only screen and (min-width: 1020px) and (max-height: 700px) {
-
     .spotlight {
         height: 150px;
     }
 
     section.row.visualTutorial{
-        margin-top: 55px;
+        margin-top: 65px;
     }
 
     .loginButton, .signingInAcc {
