@@ -31,8 +31,8 @@
             <button class="closeButton closeAbout"><i class="fas fa-times fa-3x"></i></button>
             <h1>How to use Captains Log!</h1>
             <p>Captains Logs allows you to navigate and record vacations on your schedule and imagination.</p>
-            <p>Include the time of your flight and departure from your trip as friendly reminders. In addition, create memories by inputting 
-                events you look forward during your trip. We remember memories, not days, go out and explore!
+            <p>Include the time of your flight and departure from your trip as friendly reminders. Create memories by selecting 
+                any trip from "Add New Memory" list. <i> We remember moments, not days, go out and explore!</i>
             </p>
     
             </div>
@@ -63,7 +63,7 @@
                 </button>
             </div>
             <div class="addboxdashboard eventList col-6">
-                    <h2>Add New Event:</h2>
+                    <h2>Add New Memory:</h2>
                     <div class="vacMemoList" aria-live="assertive"></div>
             </div>
         </section>
@@ -77,24 +77,24 @@
                         <div class="col-6">
                             <label for="city">City:</label>
                             <br>
-                            <input class="city" type="text">
+                            <input class="city" type="text" required>
                         </div>
                         <div class="col-6">
                             <label for="country">Country:</label>
                             <br>
-                            <input class="country" type="text">
+                            <input class="country" type="text" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <label for="flight">Flight:</label>
                             <br>
-                            <input class="flight" type="datetime-local">
+                            <input class="flight" type="datetime-local" required>
                         </div>
                         <div class="col-6">
                             <label for="departure">Departure:</label>
                             <br>
-                            <input class="departure" type="datetime-local">
+                            <input class="departure" type="datetime-local" required>
                         </div>
                     </div>
                     <div class="">
