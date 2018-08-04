@@ -15,7 +15,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false });
 router.use(bodyParser.json());
 
 router.post('/', (req, res) => {
-    const requiredFields = ['username', 'password'];
+    const requiredFields = ['username', 'password', 'firstName', 'lastName', 'email'];
     const missingField = requiredFields.find(field => !(field in req.body));
 
     if (missingField) {
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
         });
     }
 
-    const stringFields = ['username', 'password', 'firstName', 'lastName'];
+    const stringFields = ['username', 'password', 'firstName', 'lastName', 'email'];
     const nonStringField = stringFields.find(
         field => field in req.body && typeof req.body[field] !== 'string'
     );
@@ -132,9 +132,9 @@ router.post('/', (req, res) => {
         });
 });
 
-//Add a new Location
+//Add a new Vacation
 router.post('/vacation/:id', jwtAuth, (req, res) => {
-    const requiredFields = ['city', 'country', 'userID'];
+    const requiredFields = ['city', 'country', 'flight', 'departure', 'userID'];
     const missingField = requiredFields.find(field => !(field in req.body));
 
     if (missingField) {
@@ -160,14 +160,20 @@ router.post('/vacation/:id', jwtAuth, (req, res) => {
     let userID = req.body.userID;
     let city = req.body['city'];
     let country = req.body['country'];
+    let flight = req.body.flight;
+    let departure = req.body.departure;
 
     city = city.trim();
     country = country.trim();
+    flight = flight.trim();
+    departure = departure.trim();
     userID = userID.trim();
 
     return Vacation.create({
         city,
         country,
+        flight,
+        departure,
         userID
     })
     .then(vacations => {
@@ -209,12 +215,12 @@ router.post('/memories/:id', jwtAuth, (req, res) => {
 
     let {event = '', description = '', date = '', vacationID = ''} = req.body;
 
-    title = title.trim();
+    event = event.trim();
     description = description.trim();
     date =  date.trim();
     vacationID = vacationID.trim();
 
-    return Memories.create({
+    return Memory.create({
         event,
         description,
         date,
@@ -241,7 +247,7 @@ router.put('/vacation/:id', jwtAuth, (req, res) => {
     }
 
     const toUpdate = {};
-    const requiredFields = ['id', 'city', 'country'];
+    const requiredFields = ['id', 'city', 'country', 'flight', 'departure'];
 
     requiredFields.forEach(field => {
         if (field in req.body) {
@@ -294,7 +300,7 @@ router.get('/', (req, res) => {
 router.get('/vacation', (req, res) => {
     return Vacation.find()
         .then(vacations => res.json(vacations.map(vacation => vacation.serialize())))
-        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}))
+        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}));
 });
 
 router.get('/vacation/:id', jwtAuth, (req, res) => {
@@ -304,21 +310,21 @@ router.get('/vacation/:id', jwtAuth, (req, res) => {
             userID: user
         })
         .then(vacations => res.json(vacations.map(vacation => vacation.serialize())))
-        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}))
+        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}));
 });
 
 router.get('/vacation/single/:id', jwtAuth, (req, res) => {
     const id = req.params.id; 
     Vacation
-        .findById(req.params.id)
-        .then(vacation => res.json(vacation.map(vacation => vacation.serialize())))
-        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}))
+        .findById(id)
+        .then(vacation => res.json(vacation.serialize()))
+        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}));
 });
 
 router.get('/memories', (req, res) => {
     return Memory.find()
         .then(memories => res.json(memories.map(memory => memory.serialize())))
-        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}))
+        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}));
 });
 
 router.get('/memories/:id', jwtAuth, (req, res) => {
@@ -328,7 +334,7 @@ router.get('/memories/:id', jwtAuth, (req, res) => {
             vacationID: vacation
         })
         .then(memories => res.json(memories.map(memory => memory.serialize())))
-        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}))
+        .catch(err => res.status(500).json({message: `Internal server error: ${err}`}));
 });
 
 router.get('/:id', (req, res) => {
