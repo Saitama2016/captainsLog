@@ -284,7 +284,7 @@ function memoriesHTML(vacObj) {
     let city = vacObj.city;
     let country = vacObj.country;
     return `
-        <div id="${vacId}" class="selectVac" tabindex="0">
+        <div id="${vacId}" class="selectVac" type="button" tabindex="0" >
             <div id="">
                 <p><i class="fas fa-home"></i> <span>${city}, ${country}</span></p>
             </div>
