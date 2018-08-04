@@ -1,5 +1,6 @@
 'use strict'
 
+//Open Login Form
 function logIn() {
     $('.loginRegister').on('click', '#login', function () {
         $('.loginRegister').html(logInTemplate());
@@ -7,14 +8,15 @@ function logIn() {
     });
 }
 
+//Open Registration Form
 function signUp () {
     $('.loginRegister').on( 'click', '#signUp', function() {
-        console.log('clicked!');
         $('.loginRegister').html(signUpTemplate());
         $('.loginRegister').addClass("box-structure");
     });
 }
 
+//Create login form
 function logInTemplate() {
     return `<form class="loginForm" autocomplete="on">
     <fieldset>
@@ -32,6 +34,7 @@ function logInTemplate() {
 <a href="#" id="signUp"><p class="toggleReg">Sign Up!</p></a>`;
 }
 
+//Create Sign Up Registration Form
 function signUpTemplate() {
     return `<form class="signUpForm" autocomplete="on">
     <fieldset>
@@ -58,16 +61,17 @@ function signUpTemplate() {
     <a href="#" id="login"><p class="toggleReg">Login!</p></a>`;
 }
 
+//Authenticate Username and Password for Login
 function signInAuth() {
     $('.loginRegister').on('click', '.signingInAcc', function(event) {
         event.preventDefault();
         const username = $('.usernameLogIn').val();
         const password = $('.passwordLogIn').val();
-        console.log(username, password);
         postAuthLogin(username, password);
     });
 }
 
+//Make POST request to authenticate username and password login
 function postAuthLogin(username, password) {
     $.ajax({
         type: "POST",
@@ -94,6 +98,7 @@ function postAuthLogin(username, password) {
     });
 }
 
+//Make POST request to store unique account
 function signUpAuth() {
     $('.loginRegister').on('click', '.signingUpNewAccount', function(event) {
         event.preventDefault();
@@ -125,7 +130,7 @@ function signUpAuth() {
     });
 }
 
-
+//Create a function to call Signup and Login functions 
 function indexPage() {
     logIn();
     signUp();
@@ -133,4 +138,5 @@ function indexPage() {
     signUpAuth();
 }
 
+//Use jQuery to call indexPage function
 $(indexPage());

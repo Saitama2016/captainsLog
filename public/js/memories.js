@@ -1,9 +1,11 @@
-
+//Create a variable to retrieve Vacation Id
 const vacationId = localStorage.getItem('vacId');
 
+//Create global variables to retrieve list of memories and Vacation JSON
 let listOfMemories;
 let vacationInfoJSON;
 
+//Make a GET request to retrieve a single vacation Id
 function getVacationInputs() {
     console.log('click', vacationId);
     $.ajax({
@@ -30,6 +32,7 @@ function getVacationInputs() {
     });
 }
 
+//Make a POST request function to create a new Memory
 function postMemory(){
     $('.newMemoInput').on('submit', function(event) {
         event.preventDefault();
@@ -60,12 +63,14 @@ function postMemory(){
     });
 }
 
+//Make a function to clear date, event, and description of memory
 function clearInputs() {
     $('.memoDate').val('');
     $('.memoEvent').val('');
     $('.memoDescription').val('');
 }
 
+//Make a GET request function to get all memories for the vacation
 function getAllMemories() {
     $.ajax({
         type: 'GET',
@@ -96,49 +101,7 @@ function getAllMemories() {
     });
 }
 
-function vacationHTML(obj) {
-    const vacCity = obj.city;
-    const vacCountry = obj.country;
-    const vacFlight = obj.flight;
-    const vacDeparture = obj.departure;
-    return ` 
-    <form role="form" class="vacationFileInput modal-content">
-        <fieldset class="row">
-            <div class="closeButton"><i class="fas fa-times fa-3x"></i></div>
-            <h3>Vacation</h3>
-            <div class="row">
-                <div class="col-6">
-                    <label for="city">City:</label>
-                    <br>
-                    <input class="city disabledInput" type="text" name="cityName" value="${vacCity}" disabled>
-                </div>
-                <div class="col-6">
-                    <label for="city">Country:</label>
-                    <br>
-                    <input class="country disabledInput" type="text" name="countryName" value="${vacCountry}" disabled>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <label for="flight">Flight:</label>
-                    <br>
-                    <input class="flight disabledInput" type="datetime-local" name="flightDate" value="${vacFlight}" disabled>
-                </div>
-                <div class="col-4">
-                    <label for="departure">Departure:</label>
-                    <br>
-                    <input class="departure disabledInput" type="datetime-local" name="departureDate" value="${vacDeparture}" disabled>
-                </div>
-            </div>
-            <div class="">
-                <input id='editVacation' class='button nutrbtn' type='button' value='Edit'>
-                <input id='deleteVacation' class='button negbtn disabledInput' type='button' value='Delete Vacation Info & Memories' disabled>
-                <input class="btn postbtn" type="submit" value="Submit" disabled>
-            </div>
-            </fieldset>
-    </form>`;
-}
-
+//Make a template for Memory featuring properties of Memory object
 function memoryHTML(obj) {
     let memoId = obj.id;
     let memoEvent = obj.event;
@@ -162,6 +125,7 @@ function memoryHTML(obj) {
     `;
 }
 
+//Create a function to Delete a choosen memory
 function handleMemoryDelete () {
     $('.memoryList').on('click', '.deleteMemo', function() {
         let deleteItemId = $(this).closest('.fullMemo').attr('id');
@@ -179,20 +143,24 @@ function handleMemoryDelete () {
     });
 }
 
-$('.memoryList').on('click', '.editMemo', function() {
-    console.log('clicked!');
-    let editItemId = $(this).closest('.fullMemo').attr('id');
-    let date = $(this).closest('.fullMemo').find('.memoryDate').text();
-    let event = $(this).closest('.fullMemo').find('.memoryEvent').text();
-    let description = $(this).closest('.fullMemo').find('.memoryDescription').text();
-    console.log(editItemId);
-    console.log(date);
-    console.log(event);
-    console.log(description);
-    $('.memoEdit').fadeIn();
-    $('.memoEdit').html(memoryEditHTML(editItemId, date, event, description));
-});
+//Create a function to begin editing choosen Memory
+function startEditMemo () {
+    $('.memoryList').on('click', '.editMemo', function() {
+        console.log('clicked!');
+        let editItemId = $(this).closest('.fullMemo').attr('id');
+        let date = $(this).closest('.fullMemo').find('.memoryDate').text();
+        let event = $(this).closest('.fullMemo').find('.memoryEvent').text();
+        let description = $(this).closest('.fullMemo').find('.memoryDescription').text();
+        console.log(editItemId);
+        console.log(date);
+        console.log(event);
+        console.log(description);
+        $('.memoEdit').fadeIn();
+        $('.memoEdit').html(memoryEditHTML(editItemId, date, event, description));
+    });
+}
 
+//Make a template for a form to edit Memory
 function memoryEditHTML(id, date, event, description) {
     return `
     <form role="form" id="${id}" class="memoInput modal-content">
@@ -221,25 +189,10 @@ function memoryEditHTML(id, date, event, description) {
     `
 }
 
-    // $('.vacEdit').on('click', '#deleteVac', function() {
-    //     $.ajax({
-    //         type: 'DELETE',
-    //         url: `/api/users/vacation/${vacationId}`,
-    //         beforeSend: function(xhr) {
-    //         if (window.sessionStorage.accessToken) {
-    //             xhr.setRequestHeader('Authorization', 'Bearer ' + window.sessionStorage.accessToken);
-    //         }
-    //         },
-    //         error: error => console.log(error)
-    //         });
-    //     sessionStorage.removeItem('vacationId');
-    //     window.location = 'vacations.html';
-    // });
-
+//Make a function to update Memory when user submits form
 function handleMemoEditSubmit() {
     $('.memoEdit').on('submit', 'form.memoInput', function(e) {
         e.preventDefault();
-        console.log('What prevent?');
         let editItemId = $(this).closest('.memoEdit').find('form').attr('id');
         let date = $(this).closest('.memoEdit').find('.memoDateEdit').val();
         let event = $(this).closest('.memoEdit').find('.memoEventEdit').val();
@@ -267,6 +220,7 @@ function handleMemoEditSubmit() {
     });
 }
 
+//Create a function to handle buttons on Memory page
 function handleMemoryPageButtons () {
     $(document).ready(() => {
         $('.signOutYes').click(() => {
@@ -318,18 +272,22 @@ function handleMemoryPageButtons () {
     });
 }
 
+//Create function to close modals
 function outEmptyModal(element) {
     element.closest('.modal').fadeOut();
     element.closest('.modal').empty();
 }
 
+//Create a function to call Memory functions
 function runMemoryPage() {
     getVacationInputs();
     postMemory();
     getAllMemories();
     handleMemoryPageButtons();
+    startEditMemo();
     handleMemoEditSubmit();
     handleMemoryDelete();
 }
 
+//Call runMemoryPage with jQuery
 $(runMemoryPage()); 

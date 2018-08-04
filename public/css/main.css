@@ -19,7 +19,7 @@ body {
 }
 
 .memoPage {
-    background-color: #66fcf1;
+    background-color: rgb(102, 252, 241);
 }
 
 header {
@@ -54,7 +54,7 @@ button, a#login, a#signUp {
 button#signUp {
     position: absolute;
     display: block;
-    right: 20px;
+    right: 50px;
 }
 
 button:focus, .selectVac:focus {
@@ -129,6 +129,7 @@ section.row.visualTutorial {
     padding-bottom: 2rem;
     border-radius: 1rem;
     margin: 0 auto;
+    margin-top: 15px;
     width: 85%;
 }
 
@@ -211,7 +212,7 @@ nav {
 
 .eventList {
     margin-top: 10px;
-    background-color: white;
+    background-color: rgba(102, 255, 241, 0.9);
     padding-bottom: 15px;
     width: 50%;
 }

@@ -1,5 +1,7 @@
+//Create variable to get user Id
 const userId = localStorage.getItem('userId');
 
+//Create function to make a GET request for user Id
 function getUserInfo() {
     $.ajax({
         type: 'GET',
@@ -22,6 +24,7 @@ function getUserInfo() {
     })
 }
 
+//Make a POST request to create a new vacation
 function submitVacationForm(){
     $('.vacationFileInput').on('click', '.postbtn', function(event) {
         event.preventDefault();
@@ -59,6 +62,7 @@ function submitVacationForm(){
     })
 }
 
+//Make function to clear inputs in form
 function clearInputs() {
     $('.city').val('');
     $('.country').val('');
@@ -66,6 +70,7 @@ function clearInputs() {
     $('.departure').val('');
 }
 
+//Make a GET Request to retireve all vacations made by the user
 function getAllVacInputs() {
     $.ajax({
         type: 'GET',
@@ -132,6 +137,7 @@ function getAllVacInputs() {
     });
 }
 
+//Make a template to display Vacation properties
 function vacSnapShot(vacObj) {
     let vacId = vacObj.id;
     let city = vacObj.city;
@@ -156,16 +162,11 @@ function vacSnapShot(vacObj) {
         <button class='deleteVac button negbtn'><i class="fas fa-trash-alt"></i></button>
         </div>
 	</div>
-	<div class="snapMemo">
-		<h4>Recent Memory:</h4>
-		<div class="memory">
-		<div><i class="fas fa-home"></i><span class="memotitle">You haven't added a memories yet</span></div>
-	    </div>
-	</div>
     <br>
     `
 }
 
+//Make a function to Delete choosen vacation
 function handleVacDelete () {
     $('body').on('click', '.deleteVac', function() {
         let deleteItemId = $(this).closest('.snapVac').attr('id');
@@ -184,6 +185,7 @@ function handleVacDelete () {
     });
 }
 
+//Make a function to begin editing a vacation
 function handleStartVacEdit () {
     $('body').on('click', '.editVac', function() {
         console.log('clicked!');
@@ -202,6 +204,7 @@ function handleStartVacEdit () {
     });
 }
 
+//Make a template for editing vacation form
 function vacationEditHTML(id, city, country, flight, departure) {
     return ` 
     <form role="form" id='${id}' class="vacEditFileInput modal-content">
@@ -239,6 +242,7 @@ function vacationEditHTML(id, city, country, flight, departure) {
     </form>`;
 }
 
+//Create a function to update choosen vacation once user submits form
 function handleVacEditSubmit() {
     $('.vacEdit').on('submit', 'form.vacEditFileInput', function(e) {
         e.preventDefault();
@@ -274,6 +278,7 @@ function handleVacEditSubmit() {
     });
 }
 
+//Make template to allow users to select vacation
 function memoriesHTML(vacObj) {
     let vacId = vacObj.id;
     let city = vacObj.city;
@@ -287,71 +292,74 @@ function memoriesHTML(vacObj) {
     `;
 }
 
-$(document).ready(() => {
-    $('.signOutYes').click(() => {
-        console.log('click!');
+//Make a function to handle buttons on Vacation page
+function handleVacButtons () {
+    $(document).ready(() => {
+        $('.signOutYes').click(() => {
+            console.log('click!');
+        });
+
+        $('.closeAbout').click(() => {
+            $('.about').fadeOut();
+        });
+
+        $('.closeStartdash').click(() => {
+            $('.startdash').fadeOut();
+        });
+
+        $('.signOutOpt').click(() => {
+            console.log('click');
+            $('.signout').fadeIn();
+        });
+
+        $('.aboutOpt').click(() => {
+            console.log('click');
+            $('.about').fadeIn();
+        });
+
+        $('.closeSignOut').click(() => {
+            $('.signout').fadeOut();
+        });
+
+        $('.signOutNo').click(() => {
+            $('.signout').fadeOut();
+        });
+
+        $('.addVacation').click(() => {
+            $('.vacationFormInput').fadeIn();
+        })
+
+        $('.addMemories').click(() => {
+            $('.memoriesAdd').fadeIn();
+        })
+
+        $('.closeVacForm').click(() => {
+            $('.vacationFormInput').fadeOut();
+            $('.vacEditFileInput').fadeOut();
+        });
+
+        $('.closeMemoForm').click(() => {
+            $('.memoriesAdd').fadeOut();
+        });
+
     });
+}
 
-    $('.closeAbout').click(() => {
-        $('.about').fadeOut();
-    });
-
-    $('.closeStartdash').click(() => {
-        $('.startdash').fadeOut();
-    });
-
-    $('.signOutOpt').click(() => {
-        console.log('click');
-        $('.signout').fadeIn();
-    });
-
-    $('.aboutOpt').click(() => {
-        console.log('click');
-        $('.about').fadeIn();
-    });
-
-    $('.closeSignOut').click(() => {
-        $('.signout').fadeOut();
-    });
-
-    $('.signOutNo').click(() => {
-        $('.signout').fadeOut();
-    });
-
-    $('.addVacation').click(() => {
-        $('.vacationFormInput').fadeIn();
-    })
-
-    $('.addMemories').click(() => {
-        $('.memoriesAdd').fadeIn();
-    })
-
-    $('.closeVacForm').click(() => {
-        $('.vacationFormInput').fadeOut();
-        $('.vacEditFileInput').fadeOut();
-    });
-
-    $('.closeMemoForm').click(() => {
-        $('.memoriesAdd').fadeOut();
-    });
-
-});
-
+//Make function to close modals
 function outEmptyModal(element) {
     element.closest('.modal').fadeOut();
     element.closest('.modal').empty();
 }
 
-// $('.listofvacations').on('click', '.snapVac', function() {
-//     localStorage.setItem('vacId', $(this).attr('id'));
-//     window.location = 'memory.html';
-// });
+//Make function to allow users to select a vacation and view memories
+function selectVacationMemo () {
+    $('.vacMemoList').on('click', '.selectVac', function() {
+        localStorage.setItem('vacId', $(this).attr('id'));
+        window.location = 'memory.html';
+    });
+}
 
-$('.vacMemoList').on('click', '.selectVac', function() {
-    localStorage.setItem('vacId', $(this).attr('id'));
-    window.location = 'memory.html';
-});
-
+//Make a function to run vacation functions
 function runVacations() {
     getUserInfo();
     submitVacationForm();
@@ -359,6 +367,9 @@ function runVacations() {
     handleStartVacEdit();
     handleVacEditSubmit();
     handleVacDelete();
+    handleVacButtons();
+    selectVacationMemo();
 }
 
+//Call run Vacations function
 $(runVacations());

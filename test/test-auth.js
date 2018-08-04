@@ -66,7 +66,7 @@ describe('Auth endpoints', function() {
         it('Should reject requests with incorrect usernames', function () {
             return chai 
                 .request(app)
-                .post('api/auth/login')
+                .post('/api/auth/login')
                 .send({ username: 'wrongUsername', password })
                 .then(() => 
                     expect.fail(null, null, 'Request should not succeed')
@@ -84,7 +84,7 @@ describe('Auth endpoints', function() {
         it('Should reject requests with incorrect passwords', function () {
             return chai 
                 .request(app)
-                .post('api/auth/login')
+                .post('/api/auth/login')
                 .send({ username, password: 'wrongPassword' })
                 .then(() => 
                     expect.fail(null, null, 'Request should not succeed')
@@ -102,7 +102,7 @@ describe('Auth endpoints', function() {
         it('Should return a valid auth token', function () {
             return chai
                 .request(app)
-                .post('api/auth/login')
+                .post('/api/auth/login')
                 .send({ username, password })
                 .then(res => {
                     expect(res).to.have.status(200);
@@ -244,5 +244,5 @@ describe('Auth endpoints', function() {
                     expect(payload.exp).to.be.at.least(decoded.exp);
                 });
         });
-    })
-})
+    });
+});
