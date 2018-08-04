@@ -246,6 +246,7 @@ nav {
 
 .eventList {
     margin-top: 10px;
+    border-radius: 1rem;
     background-color: rgba(102, 255, 241, 0.9);
     padding-bottom: 15px;
     width: 50%;
@@ -278,6 +279,10 @@ nav {
 
 .snapVac {
     border: 1px solid;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 1rem;
+    text-align: center;
     background-color: rgba(50, 250, 250, 0.5);
 }
 
@@ -326,7 +331,8 @@ li {
 }
 
 .toVacPage {
-    height: 30px;
+    height: 50px;
+    font-size: 1rem;
 }
 
 .memoryList {
@@ -336,6 +342,9 @@ li {
 .fullMemo {
     background-color: rgba(10, 50, 150, 0.4);
     border: 1px solid;
+    border-radius: 1rem;
+    margin-left: 20px;
+    margin-right: 20px;
     margin-bottom: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -492,6 +501,10 @@ li {
         height: 150px;
     }
 
+    .tutorialHook {
+        font-size: 1.6rem;
+    }
+
     section.row.visualTutorial{
         margin-top: 65px;
     }
@@ -529,6 +542,10 @@ li {
 
     h3 {
         font-size: 2rem;
+    }
+
+    .tutorialHook {
+        font-size: 1.6rem;
     }
 
     input {
