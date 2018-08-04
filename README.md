@@ -8,7 +8,7 @@
 
 <h2>Screenshots</h2>
 <p>Welcome/ Landing Page: </p>
-<img src="https://github.com/Saitama2016/captainsLog/blob/master/screenshots/CaptainsLogLandingPage.png" alt="Captains Logs" width="350" />
+<img src="https://github.com/Saitama2016/captainsLog/blob/master/screenshots/CaptainsLogLandingPage.PNG" alt="Captains Logs Landing Page" width="350" />
 <ol>
   <li>Improve authorization for users</li>
   <li>Figure out how to do API request for Client (public folder)</li>
