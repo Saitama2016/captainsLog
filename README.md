@@ -7,13 +7,13 @@
 <p>I wanted to create a paperless travel application that allows users to document their vacations in a private platform</p>
 
 <h2>Screenshots</h2>
-<p>Welcome/ Landing Page: </p>
+<p><b>Welcome/ Landing Page: </b></p>
 <img src="https://github.com/Saitama2016/captainsLog/blob/master/screenshots/CaptainsLogLandingPage.PNG" alt="Captains Logs Landing Page" width="350" />
 
-<p>Vacation Page: </p>
+<p><b>Vacation Page: </b></p>
 <img src="https://github.com/Saitama2016/captainsLog/blob/master/screenshots/CaptainsLogVacPage.PNG" alt="Captains Logs Vacation Page" width="350" />
 
-<p>Memories Page: </p>
+<p><b>Memories Page: </b></p>
 <img src="https://github.com/Saitama2016/captainsLog/blob/master/screenshots/CaptainsLogMemPage.PNG" alt="Captains Logs Memory Page" width="350" />
 
 <h2>Summary</h2>
