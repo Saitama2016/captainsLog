@@ -48,4 +48,4 @@
   <li><a href="https://travis-ci.org/">Travis CI</a></li>
 </ul>
 <h2>Credit</h2>
-<p>Background image was made by swatchandsoda on <a href="https://www.videoblocks.com/video/looking-out-airplane-window-in-flight-ev8xrzftxik4tzzsb" target="_blank">VideoBlocks</a></p>
+<p>Background image of Airplane Window made by Ana Guzzo on <a href="https://www.independent.co.uk/travel/news-and-advice/airline-staff-reveal-why-window-shades-must-be-kept-open-during-takeoff-and-landing-a6899681.html" target="_blank">Independent.co.uk</a></p>
