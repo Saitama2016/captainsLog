@@ -48,5 +48,4 @@
   <li><a href="https://travis-ci.org/">Travis CI</a></li>
 </ul>
 <h2>Credit</h2>
-<hr>
 <p>Background image was made by swatchandsoda on <a href="https://www.videoblocks.com/video/looking-out-airplane-window-in-flight-ev8xrzftxik4tzzsb" target="_blank">VideoBlocks</a></p>
