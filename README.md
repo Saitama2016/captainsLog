@@ -38,6 +38,8 @@
   <li>brcyptjs</li>
   <li>passport</li>
   <li>Mocha</li>
+  <li>Chai</li>
+  <li>jsonwebtoken</li>
 </ul>
 <h3>Third Party Resources: <h3>
 <ul>
