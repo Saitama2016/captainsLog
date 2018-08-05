@@ -20,17 +20,31 @@
 <p>Users will create an account to plan and document their most recent vacations. The vacations documented will include the location (city, country), date/time of flight, and date/time of departuring from the trip. Users will then be able to select a vacation and document a list of events (referred as memories) during the time of their vacation. Users will be able to edit both Vacations and Memories to fix grammatical errors or change the date and time of either flight or departure. Users can also delete vacations if plans were cancelled. Users are encourage to explore the vast globe and not worry about losing track of their memories as opposed to documenting in a physical journal.</p>
 
 <h2>Technologies Used</h2>
+<hr>
 <h3>Frontend Technologies: </h3>
 <ul>
   <li>HTML</li>
   <li>CSS</li>
   <li>JavaScript</li>
   <li>Jquery</li>
-  <li>AJAX/li>
+  <li>AJAX</li>
 </ul>
 <h3>Backend Technologies: </h3>
 <ul>
   <li>Node.js</li>
   <li>Express</li>
   <li>Mongoose</li>
+  <li>MongoDB</li>
+  <li>brcyptjs</li>
+  <li>passport</li>
+  <li>Mocha</li>
 </ul>
+<h3>Third Party Resources: <h3>
+<ul>
+  <li><a href="https://www.heroku.com/">Heroku</a></li>
+  <li><a href="https://mlab.com/">mLab</a></li>
+  <li><a href="https://travis-ci.org/">Travis CI</a></li>
+</ul>
+<h2>Credit</h2>
+<hr>
+<p>Background image was made by swatchandsoda on <a href="https://www.videoblocks.com/video/looking-out-airplane-window-in-flight-ev8xrzftxik4tzzsb" target="_blank">VideoBlocks</a></p>
