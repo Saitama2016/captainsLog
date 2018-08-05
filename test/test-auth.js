@@ -16,8 +16,8 @@ describe('Auth endpoints', function() {
     //Create variables used for authorizations
     const username = 'exampleUser';
     const password = 'examplePass';
-    const firstName = 'Vinny';
-    const lastName = 'Gee';
+    const firstName = 'exampleName';
+    const lastName = 'eLastname';
     const email = 'example@example.com';
 
     //create before function to run server with TEST_DATABASE_URL

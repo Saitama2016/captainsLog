@@ -5,8 +5,8 @@ body {
 }
 
 .landingPage {
-    /*Image of Looking out airplane window in flight was made by swatchandsoda on VideoBlocks*/
-    background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/wczfl6k/looking-out-airplane-window-in-flight_niiccbfye__F0000.png);
+    /*Image of Airplane Window made by Ana Guzzo on Independent.co.uk*/
+    background-image: url(https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/02/27/11/plane-window.jpg);
     background-repeat: no-repeat;
     background-position: center;
     /* Use vh to make image fit the entire screen */
@@ -154,7 +154,7 @@ fieldset {
 }
 
 section.row.visualTutorial {
-    background-color: rgba(250, 250, 250, 0.4);
+    background-color: rgba(250, 250, 250, 0.6);
     position: initial;
     padding-left: 20px;
     padding-right: 20px;
@@ -542,6 +542,10 @@ li {
 
     h3 {
         font-size: 2rem;
+    }
+
+    .landingPage {
+        background-size: cover;
     }
 
     .tutorialHook {
