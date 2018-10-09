@@ -8,7 +8,7 @@
 
 <h2>Screenshots</h2>
 <p><b>Welcome/ Landing Page: </b></p>
-<img src="https://github.com/Saitama2016/captainsLog/blob/master/screenshots/CaptainsLogLandingPage.PNG" alt="Captains Logs Landing Page" width="350" />
+<img src="https://github.com/Saitama2016/captainsLog/blob/master/screenshots/UpdateCapLogsLandingPage.PNG" alt="Captains Logs Landing Page" width="350" />
 
 <p><b>Vacation Page: </b></p>
 <img src="https://github.com/Saitama2016/captainsLog/blob/master/screenshots/CaptainsLogVacPage.PNG" alt="Captains Logs Vacation Page" width="350" />
