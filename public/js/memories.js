@@ -179,7 +179,7 @@ function memoryEditHTML(id, date, event, description) {
             <div class="col-6">
                 <label for="description">Description:</label>
                 <br>
-                <textarea class="memoDesEdit" row="5" name="description" maxlength="250" placeholder='${description}' required></textarea>
+                <textarea class="memoDesEdit" row="5" name="description" maxlength="250" required>${description}</textarea>
             </div>
             <div class="col-3">
                 <button class="button Posbutton" type="submit">Submit Edit</button>

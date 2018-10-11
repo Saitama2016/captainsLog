@@ -94,7 +94,7 @@ function getAllVacInputs() {
                 $('.listofvacations').html('<h3>There are no vacations listed</h3>');
             } else {
                 listOfVacations = json.map(obj => {
-                    return vacSnapShot(obj);
+                    return vacList(obj);
                 });
 
                 listOfMemories = json.map(obj => {
@@ -106,7 +106,7 @@ function getAllVacInputs() {
         }
     })
     .done(function() {
-        let ids = $('.snapVac').map(function() {
+        let ids = $('.listVac').map(function() {
             return $(this).attr('id');
         });
         for(let i=0; i < ids.length; i++) {
@@ -138,14 +138,14 @@ function getAllVacInputs() {
 }
 
 //Make a template to display Vacation properties
-function vacSnapShot(vacObj) {
+function vacList(vacObj) {
     let vacId = vacObj.id;
     let city = vacObj.city;
     let country = vacObj.country;
     let flight = vacObj.flight;
     let departure = vacObj.departure;
     return `
-    <div id="${vacId}" class="snapVac box-structure">
+    <div id="${vacId}" class="listVac box-structure">
 		<div class="snapMemo">
             <p class="vacLoca">
             <span class="vacCity">${city}</span>,
@@ -169,7 +169,7 @@ function vacSnapShot(vacObj) {
 //Make a function to Delete choosen vacation
 function handleVacDelete () {
     $('body').on('click', '.deleteVac', function() {
-        let deleteItemId = $(this).closest('.snapVac').attr('id');
+        let deleteItemId = $(this).closest('.listVac').attr('id');
         console.log(deleteItemId);
         $.ajax({
             type: 'DELETE',
@@ -189,11 +189,11 @@ function handleVacDelete () {
 function handleStartVacEdit () {
     $('body').on('click', '.editVac', function() {
         console.log('clicked!');
-        let editItemId = $(this).closest('.snapVac').attr('id');
-        let city = $(this).closest('.snapVac').find('.vacCity').text();
-        let country = $(this).closest('.snapVac').find('.vacCountry').text();
-        let flight = $(this).closest('.snapVac').find('.vacFlight').text();
-        let departure = $(this).closest('.snapVac').find('.vacDepart').text();
+        let editItemId = $(this).closest('.listVac').attr('id');
+        let city = $(this).closest('.listVac').find('.vacCity').text();
+        let country = $(this).closest('.listVac').find('.vacCountry').text();
+        let flight = $(this).closest('.listVac').find('.vacFlight').text();
+        let departure = $(this).closest('.listVac').find('.vacDepart').text();
         console.log(editItemId);
         console.log(city);
         console.log(country);
