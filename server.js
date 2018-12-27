@@ -14,8 +14,6 @@ app.use(morgan('common'));
 
 mongoose.Promise = global.Promise;
 
-app.use(morgan('common'));
-
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
@@ -34,10 +32,11 @@ const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
+const jwtAuth = passport.authenticate('jwt', { session: false });
+
 app.use('/api/users', usersRouter);
 app.use('/api/auth', authRouter);
 
-const jwtAuth = passport.authenticate('jwt', { session: false });
 
 app.get('/api/protected', jwtAuth, (req,res) => {
     return res.json({
