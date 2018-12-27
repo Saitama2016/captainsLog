@@ -89,12 +89,20 @@ button#signUp, button#login, button#liveDemo {
 
 legend {
     font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-weight: 600;
+    padding: 1rem;
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 1.2rem;
     text-align: center;
-    background: #d9d9d9;
+    background: #fff;
 }
 
 label {
+    display: block;
+    margin: 0.8rem auto;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
     font-size: 1rem;
 }
 
@@ -146,6 +154,9 @@ section.loginRegister.row {
 }
 
 .loginForm, .signUpForm {
+    text-align: center;
+    background: #43daee;
+    padding-bottom: 1.5rem;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
@@ -391,7 +402,6 @@ li {
     }
 
     label {
-        float: left;
         font-size: 1.2rem;
     }
 
@@ -431,7 +441,7 @@ li {
     }
 
     label {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     legend {

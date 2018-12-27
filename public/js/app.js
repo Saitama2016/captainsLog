@@ -19,17 +19,15 @@ function signUp () {
 //Create login form
 function logInTemplate() {
     return `<form class="loginForm" autocomplete="on">
-    <fieldset>
         <div class="loginError"></div>
         <legend class="loginRegisterTitle">Glad you came back!</legend>
-        <label for="username">Username:</label>
+        <label for="username">USERNAME:</label>
         <input class="usernameLogIn" type="text" name="username" required>
         <br>
-        <label for="password">Password:</label>
+        <label for="password">PASSWORD:</label>
         <input class="passwordLogIn" type="password" name="password" required>
         <br>
         <button class="loginButton signingInAcc" type="submit">Submit</button>
-    </fieldset>
 </form>
 <a href="#" id="signUp"><p class="toggleReg">Sign Up!</p></a>`;
 }
@@ -37,26 +35,24 @@ function logInTemplate() {
 //Create Sign Up Registration Form
 function signUpTemplate() {
     return `<form class="signUpForm" autocomplete="on">
-    <fieldset>
          <div class="loginError"></div>
          <legend class="loginRegisterTitle">Welcome, aboard!</legend>
-         <label for="username">Username:</label>
+         <label for="username">USERNAME:</label>
          <input class="usernameSignUp" type="text" name="username" pattern=".{1,}" required title="1 characters minimum" required>
          <br>
-         <label for="password">Password:</label>
+         <label for="password">PASSWORD:</label>
          <input class="passwordSignUp" type="password" name="password" pattern=".{10, 72}" required title="10 characters minimum" required>
          <br>
-         <label for="firstName">First Name:</label>
+         <label for="firstName">FIRST NAME:</label>
          <input class="firstnameSignUp" type="text" name="firstName" required>
          <br>
-         <label for="lastName">Last Name:</label>
+         <label for="lastName">LAST NAME:</label>
          <input class="lastnameSignUp" type="text" name="lastName" required>
          <br>
-         <label for="email">Email:</label>
+         <label for="email">EMAIL:</label>
          <input class="emailSignUp" type="email" name="email" required>
          <br>
          <button class="loginButton signingUpNewAccount" type="submit">Submit</button>
-    </fieldset>
     </form>
     <a href="#" id="login"><p class="toggleReg">Login!</p></a>`;
 }
