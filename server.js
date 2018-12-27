@@ -1,19 +1,18 @@
-'use strict';
-
 require('dotenv').config();
-var express = require('express');
+
+const bodyParser = require('body-parser');
+const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
 
-const { router: usersRouter } = require('./users');
-const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(morgan('common'));
 
 mongoose.Promise = global.Promise;
-
-const { PORT, DATABASE_URL } = require('./config');
-
-var app = express();
 
 app.use(morgan('common'));
 
@@ -26,6 +25,11 @@ app.use(function (req, res, next) {
     }
     next();
 });
+
+const { PORT, DATABASE_URL } = require('./config');
+
+const { router: usersRouter } = require('./users');
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
@@ -82,7 +86,7 @@ function closeServer() {
 }
 
 if (require.main === module) {
-    runServer().catch(err => console.error(err));
+    runServer(DATABASE_URL).catch(err => console.error(err));
 }
 
 module.exports = { app, runServer, closeServer };
