@@ -209,8 +209,7 @@ function vacationEditHTML(id, city, country, flight, departure) {
     return ` 
     <form role="form" id='${id}' class="vacEditFileInput modal-content">
     <button class="closeButton closeVacForm"><i class="fas fa-times fa-3x"></i></button>
-        <fieldset class="row vacEditField">
-            <h3>Vacation</h3>
+            <legend>Vacation</legend>
             <div class="row">
                 <div class="col-6">
                     <label for="city">City:</label>
@@ -238,7 +237,6 @@ function vacationEditHTML(id, city, country, flight, departure) {
             <div class="">
                 <button class="btn postbtn" type="submit">Submit Edit</button>
             </div>
-        </fieldset>
     </form>`;
 }
 

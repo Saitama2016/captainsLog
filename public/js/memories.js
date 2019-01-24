@@ -165,26 +165,30 @@ function memoryEditHTML(id, date, event, description) {
     return `
     <form role="form" id="${id}" class="memoInput modal-content">
     <button class="closeButton closeMemoForm"><i class="fas fa-times fa-3x"></i></button>
-        <fieldset class="row">
-            <div class="col-3">
-                <label for="date">Date:</label>
+        <legend>Edit Memory</legend>
+            <div class="row">
+                <div class="col-6">
+                    <label for="date">Date:</label>
+                    <br>
+                    <input class="memoDateEdit" type="date" name="date" value='${date}'>
+                </div>
                 <br>
-                <input class="memoDateEdit" type="date" name="date" value='${date}'>
-                <br>
-                <label for="event">Event:</label>
-                <br>
-                <input class="memoEventEdit" type="text" name="memories" value='${event}'>
+                <div class="col-6">
+                    <label for="event">Event:</label>
+                    <br>
+                    <input class="memoEventEdit" type="text" name="memories" value='${event}'>
+                </div>
             </div>
-
-            <div class="col-6">
-                <label for="description">Description:</label>
-                <br>
-                <textarea class="memoDesEdit" row="5" name="description" maxlength="250" required>${description}</textarea>
+            <div class="row">
+                <div class="col-6">
+                    <label for="description">Description:</label>
+                    <br>
+                    <textarea class="memoDesEdit" row="5" name="description" maxlength="250" required>${description}</textarea>
+                </div>
             </div>
-            <div class="col-3">
-                <button class="button Posbutton" type="submit">Submit Edit</button>
+            <div>
+                <button class="button postbtn" type="submit">Submit Edit</button>
             </div>
-        </fieldset>
     </form>
     `
 }

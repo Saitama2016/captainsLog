@@ -58,26 +58,30 @@
 <section role="region" class="memoriesAdd modal" style="border: solid">
     <form role="form" class="newMemoInput modal-content">
             <button class="closeButton closeMemoForm"><i class="fas fa-times fa-3x"></i></button>
-        <fieldset class="row">
-            <div class="col-3">
-                <label for="date">Date:</label>
+            <legend>Memory</legend>
+            <div class="row">
+                <div class="col-6">
+                    <label for="date">Date:</label>
+                    <br>
+                    <input class="memoDate" type="date" name="date" required>
+                </div>
                 <br>
-                <input class="memoDate" type="date" name="date" required>
-                <br>
-                <label for="event">Event:</label>
-                <br>
-                <input class="memoEvent" type="text" name="memories" required>
+                <div class="col-6">
+                    <label for="event">Event:</label>
+                    <br>
+                    <input class="memoEvent" type="text" name="memories" required>
+                </div>
             </div>
-
+            <div class="row">
             <div class="col-6">
                 <label for="description">Description:</label>
                 <br>
                 <textarea class="memoDescription" rows="5" name="description" maxlength="250" required></textarea>
             </div>
-            <div class="col-3">
-                <button class="button Posbutton" type="submit">Submit</button>
             </div>
-        </fieldset>
+            <div>
+                <button class="button postbtn" type="submit">Submit</button>
+            </div>
     </form>
 </section>
     

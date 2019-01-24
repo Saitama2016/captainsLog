@@ -56,10 +56,14 @@ body, button {
 }
 
 button, a#login, a#signUp {
-    border-radius: 1rem;
+    border-radius: 10px;
     background-color: skyblue;
     font-weight: 600;
     box-shadow: 1px 2px 2px mediumslateblue;
+}
+
+.closeButton {
+    margin: 20px auto;
 }
 
 button#signUp {
@@ -162,8 +166,8 @@ section.loginRegister.row {
     margin-right: auto;
 }
 
-fieldset {
-    background: rgba(200,200,200,0.5);
+.vacationFileInput, .vacEditFileInput, .newMemoInput, .memoInput {
+    background: #43daee;
 }
 
 section.row.visualTutorial {
@@ -248,10 +252,13 @@ nav {
 }
 
 .postbtn {
-    margin: auto;
+    font-size: 1.1rem;
+    margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 3rem;
+    width: 7rem;
 }
 
 .eventList {
@@ -270,8 +277,10 @@ nav {
     box-shadow: 1px 2px 2px darkslategrey;
 }
 
-.selectVac:hover, button:hover, .snapMemo {
+.selectVac:hover, button:hover, .toVacPage:hover, a:hover{
     cursor: pointer;
+    background: black;
+    color: white;
 }
 
 
@@ -338,6 +347,8 @@ li {
 
 .viewDes {
     font-size: 1.3rem;
+    height: 2.2rem;
+    width: 2.2rem;
     background-color: #a8d0e6;
 }
 
@@ -382,7 +393,7 @@ li {
     }
 
     .step {
-        font-size: .8rem;
+        font-size: .7rem;
     }
 
     .addMemories {
@@ -391,7 +402,7 @@ li {
     }
 
     .loginForm, .signUpForm {
-        width: 70%;
+        width: 100%;
     }
 }
 
@@ -411,7 +422,7 @@ li {
 
     input {
         height: 2rem;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .signOutOpt, .aboutOpt {
@@ -428,10 +439,11 @@ li {
         padding-right: 15px;
     }
 
-    .postbtn, .Posbutton {
+    .postbtn {
         height: 40px;
         font-size: 1rem;
-        margin-top: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
 
