@@ -41,6 +41,10 @@ h1, h2 {
     text-align: center;
 }
 
+h1 {
+    font-size: 1.5rem;
+}
+
 body, button {
     font-family: 'Rubik', sans-serif;
 }
@@ -189,6 +193,7 @@ section.loginRegister.row.box-structure {
 #Logo {
     font-family: 'Cardo', serif;
     margin: 5px;
+    font-size: 2.2rem;
 }
 
 #Logo:hover {
@@ -199,6 +204,12 @@ main {
     padding-top: 85px;
     padding-bottom: 85px;
     margin-top: 15px;
+}
+
+.vacHeader {
+    font-size: 1.3rem;
+    text-decoration: underline;
+    margin-top: 50px;
 }
 
 .arrival, .departure {
@@ -381,7 +392,7 @@ li {
     display: none;
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 600px) {
     #Intro {
         font-size: 1.05rem;
         margin-top: 0;
