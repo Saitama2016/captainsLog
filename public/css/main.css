@@ -188,7 +188,7 @@ section.loginRegister.row.box-structure {
 
 #Logo {
     font-family: 'Cardo', serif;
-    margin-bottom: 0;
+    margin: 5px;
 }
 
 #Logo:hover {
@@ -198,6 +198,7 @@ section.loginRegister.row.box-structure {
 main {
     padding-top: 85px;
     padding-bottom: 85px;
+    margin-top: 15px;
 }
 
 .arrival, .departure {
