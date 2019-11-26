@@ -157,14 +157,50 @@ router.post('/vacation/:id', jwtAuth, (req, res) => {
         });
     }
 
-    let userID = req.body.userID;
-    let city = req.body['city'];
-    let country = req.body['country'];
-    let flight = req.body.flight;
-    let departure = req.body.departure;
+    const sizedFields = {
+        city: {
+            min: 1,
+            max: 20
+        },
+        country: {
+            min: 1,
+            max: 74
+        }
+    };
 
-    city = city.trim();
-    country = country.trim();
+    const tooSmallField = Object.keys(sizedFields).find(
+        field =>
+            'min' in sizedFields[field] &&
+                req.body[field].trim().length < sizedFields[field].min
+    );
+
+    const tooLargeField = Object.keys(sizedFields).find(
+        field => 
+            'max' in sizedFields[field] &&
+                req.body[field].trim().length > sizedFields[field].max
+    );
+
+    if (tooSmallField || tooLargeField) {
+        return res.status(422).json({
+            code: 422,
+            reason: 'ValidationError',
+            message: tooSmallField
+                ? `Must be at least ${sizedFields[tooSmallField].min} characters long`
+                : `Must be at most ${sizedFields[tooLargeField].max} characters long`,
+            location: tooSmallField || tooLargeField
+        });
+    }
+
+    let {city, country, flight = '', departure = '', userID} = req.body;
+
+    // let userID = req.body.userID;
+    // let city = req.body['city'];
+    // let country = req.body['country'];
+    // let flight = req.body.flight;
+    // let departure = req.body.departure;
+
+    // city = city.trim();
+    // country = country.trim();
     flight = flight.trim();
     departure = departure.trim();
     userID = userID.trim();

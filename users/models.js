@@ -31,10 +31,20 @@ const UserSchema = mongoose.Schema({
 
 //Create a Scehma for vacationLog to outline the desired Object
 const vacationSchema = mongoose.Schema({
-    flight: String,
-    departure: String,
-    city: String,
-    country: String,
+    flight: {
+        type: String,
+    },
+    departure: { 
+        type: String,
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    country: { 
+        type: String,
+        required: true
+    },
     userID: String
 });
 

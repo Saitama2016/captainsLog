@@ -213,6 +213,12 @@ main {
     margin-top: 50px;
 }
 
+.vacationError {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
 .arrival, .departure {
     font-weight: 600;
 }

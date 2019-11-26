@@ -52,6 +52,11 @@ function submitVacationForm(){
             error: error => {
                 if(error.responseText === 'Unauthorized') {
                     window.location = 'index.html';
+                } 
+                else if (error.responseJSON.reason === "ValidationError") {
+                    $('.vacationError').fadeIn();
+                    $('.vacationError').text(`${error.responseJSON.location}: ${error.responseJSON.message}`)
+                    console.log(error.responseJSON.message)
                 }
                 console.log(error);
             }
@@ -325,6 +330,7 @@ function handleVacButtons () {
 
         $('.addVacation').click(() => {
             $('.vacationFormInput').fadeIn();
+            $('.vacationError').fadeOut();
         })
 
         $('.addMemories').click(() => {

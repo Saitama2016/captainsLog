@@ -57,6 +57,7 @@
         </section>
     
         <section class="row" role="region">
+            <p class="vacationError"></p>
             <div class="addboxdashboard col-6">
                 <button class="addVacation" tabindex="0">
                     <h2>Add Vacation <i class="fas fa-plane"></i></h2>
@@ -74,14 +75,14 @@
                     <legend>Vacation</legend>
                     <div class="row">
                         <div class="col-6">
-                            <label for="city">City:</label>
+                            <label for="city">City: *</label>
                             <br>
-                            <input class="city" type="text" required>
+                            <input class="city" type="text" pattern=".{1, 20}" required title="1 characters minimum" required />
                         </div>
                         <div class="col-6">
-                            <label for="country">Country:</label>
+                            <label for="country">Country: *</label>
                             <br>
-                            <input class="country" type="text" required>
+                            <input class="country" type="text" pattern=".{5, 74}" required title="10 characters minimum" required />
                         </div>
                     </div>
                     <div class="row">
