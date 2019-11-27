@@ -4,17 +4,8 @@ body {
     margin: 0;
 }
 
-.landingPage {
+.landingPage, .vacationPage, .memoPage {
     background-color: #25c5df;
-}
-
-/* Allow Vacation and Memories Pages to have different backgrounds */
-.vacationPage {
-    background-color: #acf5fb;
-}
-
-.memoPage {
-    background-color: rgb(102, 252, 241);
 }
 
 header {
@@ -60,13 +51,15 @@ body, button {
 }
 
 button, a#login, a#signUp {
-    border-radius: 10px;
+    border: none;
+    border-radius: 50px;
     background-color: skyblue;
     font-weight: 600;
-    box-shadow: 1px 2px 2px mediumslateblue;
 }
 
 .closeButton {
+    background: #cdf9ff;
+    width: 3rem;
     margin: 20px auto;
 }
 
@@ -82,6 +75,7 @@ button#login {
 }
 
 button#liveDemo {
+    background: #25c5df;
     margin-bottom: 10px;
 }
 
@@ -176,7 +170,7 @@ section.loginRegister.row {
 }
 
 section.row.visualTutorial {
-    background-color: rgba(250, 250, 250, 0.6);
+    background-color: #cdf9ff;
     position: initial;
     padding-left: 20px;
     padding-right: 20px;
@@ -214,6 +208,7 @@ main {
 }
 
 .vacationError {
+    font-size: 1.2rem;
     text-align: center;
     color: red;
     font-weight: bold;
@@ -242,7 +237,6 @@ main {
     height: 100px;
     border: 1px solid black;
     border-radius: 1rem;
-    background-color: #c2d4d8;
 }
 
 nav {
@@ -250,10 +244,11 @@ nav {
 }
 
 .signOutOpt, .aboutOpt {
+    border: none;
     background-color: #1f2833;
     color: white;
     font-weight: 400;
-    margin-right: 5px;
+    margin: 0rem 1rem;
 }
 
 .signOutYes {
@@ -283,7 +278,7 @@ nav {
 .eventList {
     margin-top: 10px;
     border-radius: 1rem;
-    background-color:#75d5e3;
+    background-color:#cdf9ff;
     padding-bottom: 15px;
     width: 50%;
 }
@@ -648,6 +643,8 @@ li {
     }
 
     .addVacation {
+        background-color: #25c5df;
+        border: none;
         height: 100px;
     }
 
@@ -675,6 +672,8 @@ li {
     }
 
     .editVac, .deleteVac, .editMemo, .deleteMemo {
+        background-color: #cdf9ff;
+        border: none;
         font-size: 1.2rem;
         padding-left: 30px;
         padding-right: 30px;
