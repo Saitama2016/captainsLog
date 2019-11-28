@@ -41,6 +41,7 @@ body, button {
 }
 
 #Intro {
+    padding: 1rem;
     font-size: 1.7rem;
     text-align: center;
 }
@@ -53,14 +54,17 @@ body, button {
 button, a#login, a#signUp {
     border: none;
     border-radius: 50px;
-    background-color: skyblue;
+    background-color: #cdf9ff;
     font-weight: 600;
 }
 
 .closeButton {
-    background: #cdf9ff;
     width: 3rem;
     margin: 20px auto;
+}
+
+.closeButton, .signOutNo, .signOutYes {
+    background: #43daee;
 }
 
 button#signUp {
@@ -257,7 +261,7 @@ nav {
 }
 
 .addVacation, .addMemories, .toVacPage {
-    background-color: #a8d0e6;
+    background-color: #cdf9ff;
     height: 60px;
 }
 
@@ -278,17 +282,17 @@ nav {
 .eventList {
     margin-top: 10px;
     border-radius: 1rem;
-    background-color:#cdf9ff;
     padding-bottom: 15px;
     width: 50%;
 }
 
 .selectVac {
+    background: #cdf9ff;
     margin-top: 15px;
     text-align: center;
+    padding: 0.2rem;;
     border: 1px solid;
     border-radius: 1rem;
-    box-shadow: 1px 2px 2px darkslategrey;
 }
 
 .selectVac:hover, button:hover, .toVacPage:hover, a:hover{
