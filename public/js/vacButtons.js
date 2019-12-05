@@ -199,11 +199,6 @@ function handleStartVacEdit () {
         let country = $(this).closest('.listVac').find('.vacCountry').text();
         let flight = $(this).closest('.listVac').find('.vacFlight').text();
         let departure = $(this).closest('.listVac').find('.vacDepart').text();
-        console.log(editItemId);
-        console.log(city);
-        console.log(country);
-        console.log(flight);
-        console.log(departure);
         $('.vacEdit').fadeIn();
         $('.vacEdit').html(vacationEditHTML(editItemId, city, country, flight, departure));
     });
@@ -255,8 +250,6 @@ function handleVacEditSubmit() {
         let country = $(this).closest('.vacEdit').find('.countryEdit').val();
         let flight = $(this).closest('.vacEdit').find('.flightEdit').val();
         let departure = $(this).closest('.vacEdit').find('.departureEdit').val();
-        console.log(editItemId);
-        console.log(city);
         $.ajax({
             type: 'PUT',
             url: `/api/users/vacation/${editItemId}`,
